@@ -47,12 +47,12 @@ def start(): #starting    scrip, sets initial variables etc.
     print("\t**********************************************")
     game.__init__()
 
-
+#Updates the state of the game, might be better to do this in paralel. Resp. maybe not neccesary,
+#as in the final version the game will not wait for user input.
 before = 0 # dummy just to initialise
 def tick():
-
     since_last = time.time() - start_time - before
-    last = time.time() - start_time
+    before = time.time() - start_time
     game.dollars += game.income*since_last
 
 
@@ -61,13 +61,11 @@ def clear_screen():
     os.system('cls' if os.name=='nt' else 'clear')
 
 def status():
-    clear_screen()
     print("\nState of the game")
     print("$:", game.dollars)
     if game.debug == 1: #an example of debuging info the players will normally not see
         print("Income:", game.income)
         print("Seconds since start:", round(time.time() - start_time,1))
-    return
 
 game = State()
 
@@ -77,4 +75,6 @@ while True: # main game loop
     tick()
     status()
     cmd = input("Enter command:")
+    clear_screen()
     command(cmd)
+    
