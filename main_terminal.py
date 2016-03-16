@@ -1,4 +1,3 @@
-import os #for clearing terminal
 import random
 import time
 import shop
@@ -110,12 +109,13 @@ def tick():
 
 def status():
     print("\nState of the game:")
-    print(" $:", game.dollars)
-    print(" BTC:", game.bitcoins)
-    print(" $ per BTC:", game.btc_rate)
+    print("   $:", game.dollars)
+    print("   BTC:", game.bitcoins)
+    print("   $ per BTC:", game.btc_rate)
     if game.debug == 1: #debuging info the players will normally not see
-        print("Income:", game.income)
-        print("Seconds since start:", round(time.time() - start_time,1))
+        print("Debuging info:")
+        print("   Income:", game.income)
+        print("   Seconds since start:", round(time.time() - start_time,1))
 
 
 game = State()
