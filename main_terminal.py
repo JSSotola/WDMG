@@ -4,13 +4,14 @@ import time
 start_time = time.time()#probably not a good implementation
 
 
-
+#Main game class that keeps track of game variables
 class State():
     def __init__(self):
 
         self.dollars = 100 + random.randint(-25,50)
+        self.bitcoin = 0
         self.debug = 0
-        self.income =1
+        self.income = 0
 
 cmds = ["restart", "help", "debug", "shop", "inventory", "cmd5"] # list of commands
 def command(argument):
