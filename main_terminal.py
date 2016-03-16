@@ -4,9 +4,9 @@ import numpy as np
 import random
 import time
 
-start_time = time.time()#not a good implementation
+start_time = time.time()#probably not a good implementation
 
-before = 0
+
 
 class State():
     def __init__(self):
@@ -15,7 +15,7 @@ class State():
         self.debug = 0
         self.income =1
 
-cmds = ["restart", "help", "debug", "shop", "inventory", "cmd5"]
+cmds = ["restart", "help", "debug", "shop", "inventory", "cmd5"] # list of commands
 def command(argument):
     print("\n")
     if argument == cmds[0]:
@@ -49,10 +49,9 @@ def start(): #starting    scrip, sets initial variables etc.
     game.__init__()
 
 
-
+before = 0 # dummy just to initialise
 def tick():
 
-   # last = 0
     since_last = time.time() - start_time - before
     last = time.time() - start_time
     game.dollars += game.income*since_last
@@ -62,7 +61,7 @@ def status():
     print("\nState of the game")
     print("Seconds since start:", round(time.time() - start_time,1))
     print("$:", game.dollars)
-    if game.debug == 1:
+    if game.debug == 1: #an example of debuging info the players will normally not see
         print("Income:", game.income)
     return
 
@@ -70,7 +69,7 @@ game = State()
 
 start()
 
-while True:
+while True: # main game loop
     tick()
     status()
     cmd = input("Enter command:")
