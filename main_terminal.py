@@ -20,7 +20,8 @@ class State():
 #checks commands and executes the correct one
 #Since Python does not have cases/switches this is done with elif's it could also be donne with dictionary but this seemed simpler.
 def command(argument):
-    cmds = ["quit" or "q", "restart" or "r", "help" or "h", "debug" or "d", "shop", "inventory", "status" or "s", "cmd7" , "exchange"] # list of commands
+    # list of commands
+    cmds = ["quit" or "q", "restart" or "r", "help" or "h", "debug" or "d", "shop", "inventory", "status" or "s", "cmd7" , "exchange"]
     print("\n")
     if argument in (cmds[0]):
         quit()
@@ -53,7 +54,8 @@ def command(argument):
 
 
 def exchange():
-    print("How many BTC to buy?\n NB: Enter negative number to sell. 'r' to return to the main screen.\n The current rate is", game.btc_rate, "$ per BTC")
+    print("How many BTC to buy?\n NB: Enter negative number to sell. 'r' to return to the main screen.")
+    print("The current rate is", game.btc_rate, "$ per BTC")
     buy = input("Buy BTC:")
     if buy in ["r", 0, "q"]:
         print("Returning to main menu")
