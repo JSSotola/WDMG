@@ -4,8 +4,6 @@ import time
 import shop
 import market
 
-start_time = time.time()#probably not a good implementation
-
 
 #Main game class that keeps track of game variables
 class State():
@@ -97,9 +95,11 @@ def start(): #starting    scrip, sets initial variables etc.
     print("\t**********************************************")
     game.__init__()
 
+
 #Updates the state of the game, might be better to do this in paralel. Resp. maybe not neccesary,
 #as in the final version the game will not wait for user input.
 before = 0 # dummy just to initialise
+start_time = time.time()
 def tick():
     last = before
     since_last = time.time() - start_time - before
@@ -107,18 +107,16 @@ def tick():
     game.dollars += game.income*since_last
     game.btc_rate += random.randint(-300,300)/10
 
-#NB: Does not work for PyCharm console. Cannot find a workaround something to do with environment variables
-def clear_screen():
-    os.system('cls' if os.name=='nt' else 'clear')
 
 def status():
     print("\nState of the game:")
     print(" $:", game.dollars)
     print(" BTC:", game.bitcoins)
     print(" $ per BTC:", game.btc_rate)
-    if game.debug == 1: #an example of debuging info the players will normally not see
+    if game.debug == 1: #debuging info the players will normally not see
         print("Income:", game.income)
         print("Seconds since start:", round(time.time() - start_time,1))
+
 
 game = State()
 start()
