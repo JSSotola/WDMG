@@ -1,3 +1,4 @@
+import os #for clearing terminal
 import random
 import time
 
@@ -55,12 +56,17 @@ def tick():
     game.dollars += game.income*since_last
 
 
+#NB: Does not work for PyCharm console. Cannot find a workaround something to do with environment variables
+def clear_screen():
+    os.system('cls' if os.name=='nt' else 'clear')
+
 def status():
+    clear_screen()
     print("\nState of the game")
-    print("Seconds since start:", round(time.time() - start_time,1))
     print("$:", game.dollars)
     if game.debug == 1: #an example of debuging info the players will normally not see
         print("Income:", game.income)
+        print("Seconds since start:", round(time.time() - start_time,1))
     return
 
 game = State()
