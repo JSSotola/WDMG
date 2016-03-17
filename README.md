@@ -22,5 +22,4 @@ Note: For some of the commands you can use the first letter as a shortcut.
 
 
 Packages reguired to run:  
-pip install numpy  
-pip install tabulate  
+`pip install numpy tabulate`
