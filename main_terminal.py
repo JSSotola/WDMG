@@ -25,8 +25,9 @@ class State():
 #checks commands and executes the correct one
 #Since Python does not have cases/switches this is done with elif's it could also be donne with dictionary but this seemed simpler.
 def command(argument):
-    cmds = ["quit" or "q", "restart" or "r", "help" or "h", "debug" or "d", "shop", "inventory", "status" or "s", "cmd7" , "exchange", "market", "equipment" or "e"] # list of commands
-    help = ["Quits the game", "Restarts", "Displays this help file", "Debug on or off", "Opens the legal store", "Displays what you own", "Updates the game state", "Does nothing", "Currency exchange", "The illegal market", "displays equipment"]
+    cmds = ["quit" or "q", "restart" or "r", "help" or "h", "debug" or "d", "shop", "inventory", "status" or "s", "terminal" , "exchange", "market", "equipment" or "e"] # list of commands
+    help = ["Quits the game", "Restarts", "Displays this help file", "Debug on or off", "Opens the legal store", "Takes invetory of your goods", "Updates the game state",
+            "Opens the in game terminal", "Currency exchange", "The illegal market", "Displays equipment"]
     print("\n")
     if argument in (cmds[0]):
         quit()
@@ -36,6 +37,7 @@ def command(argument):
     elif argument in cmds[2]:
         print("Availible commands are:")
         print(tabulate({"Command": cmds, "Description":help}, headers="keys" ))
+        print("For most comands you can use the first letter as a shortcut")
 
 
     elif argument in cmds[3]:
@@ -53,7 +55,7 @@ def command(argument):
         pass #just updates the game
 
     elif argument in cmds[7]:
-        pass # will do something
+        pass # will open a 'terminal'
 
     elif argument in cmds[8]:
         exchange()
