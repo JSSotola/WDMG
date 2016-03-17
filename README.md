@@ -18,6 +18,7 @@ Currently the availible commands are:
 |`exchange` | Currency exchange || 
 |`market` | The illegal marke  |not implemented| 
 |`equipment` | Displays equipment    |See inventory| 
+Note: For some of the commands you can use the first letter as a shortcut.
 
 
 Packages reguired to run:  
