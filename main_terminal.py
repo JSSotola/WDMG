@@ -2,25 +2,31 @@ import random
 import time
 import shop
 import market
+from tabulate import tabulate
+import numpy as np
 
+start_time = time.time()
 
 #Main game class that keeps track of game variables
 class State():
     def __init__(self):
 
-        self.dollars = 100 + random.randint(-25,50)
+        self.dollars = 400 + random.randint(-150,200)
         self.bitcoins = 0
-        self.debug = 1
-        self.income = 1
+        self.debug = 0
+        self.income = 0 #In BTC
         self.btc_rate = 300 # exchange rate in dollars
+        self.equipment = np.zeros(shape = (1,9))
+        self.shop = shop.Shop()
+        self.time_last_tick = time.time()
 
 
 ############
 #checks commands and executes the correct one
 #Since Python does not have cases/switches this is done with elif's it could also be donne with dictionary but this seemed simpler.
 def command(argument):
-    cmds = ["quit" or "q", "restart" or "r", "help" or "h", "debug" or "d", "shop", "inventory", "status" or "s", "cmd7" , "exchange", "market"] # list of commands
-    help = ["Quits the game", "Restarts", "Displays this help file", "Debug on or off", "Opens the legal store", "Displays what you own", "Does nothing", "Does nothing", "Currency exchange", "The illegal market" ]
+    cmds = ["quit" or "q", "restart" or "r", "help" or "h", "debug" or "d", "shop", "inventory", "status" or "s", "cmd7" , "exchange", "market", "equipment" or "e"] # list of commands
+    help = ["Quits the game", "Restarts", "Displays this help file", "Debug on or off", "Opens the legal store", "Displays what you own", "Updates the game state", "Does nothing", "Currency exchange", "The illegal market", "displays equipment"]
     print("\n")
     if argument in (cmds[0]):
         quit()
@@ -29,15 +35,16 @@ def command(argument):
 
     elif argument in cmds[2]:
         print("Availible commands are:")
-        for i in range(len(cmds)):
-            print(cmds[i],": ", help[i])
+        print(tabulate({"Command": cmds, "Description":help}, headers="keys" ))
+
 
     elif argument in cmds[3]:
         game.debug = (game.debug + 1)%2
         print("Debug set to:", game.debug)
 
     elif argument in cmds[4]:
-        shop
+        game.shop.display_inventory(game)
+
 
     elif argument in cmds[5]:
         print("You do not own anything. Try buying something in the shop or on the market.")
@@ -53,6 +60,11 @@ def command(argument):
 
     elif argument in cmds[9]:
         market
+    elif argument in cmds[10]:
+        if len(game.equipment) > 0:
+            print(tabulate(game.equipment))
+        else:
+            print("You have no equipment at the moment. Try shopping for something.")
     else:
         print("Sorry, command not found :(")
 
@@ -97,13 +109,15 @@ def start(): #starting    scrip, sets initial variables etc.
 
 #Updates the state of the game, might be better to do this in paralel. Resp. maybe not neccesary,
 #as in the final version the game will not wait for user input.
-before = 0 # dummy just to initialise
-start_time = time.time()
 def tick():
-    last = before
-    since_last = time.time() - start_time - before
-    last = time.time() - start_time
-    game.dollars += game.income*since_last
+    #calculates time since last time game was updated
+    since_last = time.time() - game.time_last_tick
+    game.time_last_tick = time.time() #set up for next interation
+
+    #sets income depending on the current equipement
+    game.income = np.sum(game.equipment[:,4].astype(np.float))
+
+    game.bitcoins += game.income*since_last
     game.btc_rate += random.randint(-300,300)/10
 
 

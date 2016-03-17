@@ -1,0 +1,6 @@
+number,name,cost,description,income,other effects,availible if ,bigger than,notes
+1,cheap laptop,200,A cheap laptop that can be used to connect to the internet or mine bitcoins,0.001,,,,
+2,MacBook,1000,An expensive laptop that can be used to connect to the internet or mine bitcoins,0.002,,,,
+3,something,1,only unlocks after 10s of play,,,time,,
+4,placeholder,,,,,,,
+5,placeholder2,,,,,,,
