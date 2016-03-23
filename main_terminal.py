@@ -25,13 +25,15 @@ class State():
 #checks commands and executes the correct one
 #Since Python does not have cases/switches this is done with elif's it could also be donne with dictionary but this seemed simpler.
 def command(argument):
-    cmds = ["quit" or "q", "restart" or "r", "help" or "h", "debug" or "d", "shop", "inventory", "status" or "s", "terminal" , "exchange", "market", "equipment" or "e"] # list of commands
+    cmds = [["quit", "q"], ["restart", "r"], ["help", "h"], ["debug", "d"], ["shop"], ["inventory","i"], ["status", "s"], ["terminal", "t"],
+            ["exchange"], ["market"], ["equipment", "e"]] # list of commands
     help = ["Quits the game", "Restarts", "Displays this help file", "Debug on or off", "Opens the legal store", "Takes invetory of your goods", "Updates the game state",
             "Opens the in game terminal", "Currency exchange", "The illegal market", "Displays equipment"]
     print("\n")
     if argument in (cmds[0]):
         quit()
     elif argument in cmds[1]:
+        print("Restarting the game...")
         start()
 
     elif argument in cmds[2]:
@@ -55,16 +57,18 @@ def command(argument):
         pass #just updates the game
 
     elif argument in cmds[7]:
-        pass # will open a 'terminal'
+        print("Not yet implemented.")
+        # will open a 'terminal'
 
     elif argument in cmds[8]:
         exchange()
 
     elif argument in cmds[9]:
-        market
+        market.Market()
     elif argument in cmds[10]:
-        if len(game.equipment) > 0:
+        if len(game.equipment) > 1:
             print(tabulate(game.equipment))
+            print("Here you will be able to use your items (as soon as it is implemented).")
         else:
             print("You have no equipment at the moment. Try shopping for something.")
     else:
@@ -106,6 +110,7 @@ def start(): #starting    scrip, sets initial variables etc.
     print("\t**********************************************")
     print("\t***  Welcome!  ***")
     print("\t**********************************************")
+    print("Type 'help' to display availible commands.")
     game.__init__()
 
 
