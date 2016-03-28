@@ -25,9 +25,9 @@ class MainGame(Widget):
 
 class Actions(BoxLayout):
 
-    def hulk_smash(self):
-        self.ids.hulk.text = "hulk: puny god!"
-        self.ids["loki"].text = "loki: >_<!!!"  # alternative syntax
+    def press(self):
+        self.ids.button1.text = "Pressed"
+        self.ids.label1.text = "test2"
 
 class MainApp(App):
     def build(self):
