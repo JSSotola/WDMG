@@ -2,4 +2,4 @@
 
 A Kivy branch.
 
-Just a button and some text atm.
+Implemented a basic scoreboard and currency exchange.
