@@ -1,7 +1,7 @@
 #:kivy 1.9.1
 
 <Scoreboard>:
-    size: self.parent.width/4, self.parent.top/2
+    size: self.parent.width/4, self.parent.top*3/4
     canvas:
         Color:
             rgba: 0,0,255,0.3
@@ -27,26 +27,58 @@
     Label:
         font_size: 20
         pos: self.width/2, root.top*0.7
-        text: "$ per BTC: " + str(root.btc_rate)
+        text: "$ per BTC: " + str(self.parent.btc_rate)
+
+    Label:
+        id: debug
+        font_size: 20
+        pos: self.width/2, root.top*0.65
+        text: "Debuging OFF"
 
 
 <Actions>
-    Label:
-        id: label1
-        text: 'test'
+    size: self.parent.width, self.parent.top/4
+    canvas:
+        Color:
+            rgba: 0,0,255,0.3
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
     Button:
-        id: button1
-        text: "press to do something"
-        on_release: root.press()
+        id: exchange
+        text: "Currency exchange"
+        on_release: root.exchange(root.parent)
+
+    Button:
+        id: restart
+        text: "Restart the game"
+        on_release: root.restart(self.parent.parent)
+
+<MainWindow>
+    size: self.parent.width*3/4, self.parent.top*3/4
+    canvas:
+        Color:
+            rgba: 0,0,255,1
+        Rectangle:
+            pos: self.pos
+            size: self.size
 
 
 <MainGame>:
+    score: scoreid
+    actions: actionsid
+    main: mainid
 
-    canvas:
-        Rectangle:
-            pos: 0, self.center_y - 5
-            size: self.width, 10
+
     Scoreboard:
-        pos: 0, root.top/2
+        id: scoreid
+        pos: 0, root.top*3/12
+
     Actions:
-        pos: 100, 100
+        id: actionsid
+        pos: 0, 0
+
+    MainWindow:
+        id: mainid
+        pos: root.width/4, root.top/4
