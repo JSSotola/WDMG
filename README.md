@@ -1,5 +1,7 @@
 # WDMG
 
+SEE KIVY BRANCH.
+
 A basic version of the game.  
 
 Currently the availible commands are:  
