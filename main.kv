@@ -1,0 +1,51 @@
+#:kivy 1.9.1
+
+<Scoreboard>:
+    size: self.parent.width/4, self.parent.top/2
+    canvas:
+        Color:
+            rgba: 0,0,255,0.3
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    Label:
+        font_size: 20
+        pos: self.width/2, root.top*0.87
+        text: "State of the game: "
+
+    Label:
+        font_size: 20
+        pos: self.width/2, root.top*0.8
+        text: "Dollars: " + str(root.dollars)
+
+    Label:
+        font_size: 20
+        pos: self.width/2, root.top*0.75
+        text: "Bitcoins: " + str(root.bitcoins)
+
+    Label:
+        font_size: 20
+        pos: self.width/2, root.top*0.7
+        text: "$ per BTC: " + str(root.btc_rate)
+
+
+<Actions>
+    Label:
+        id: loki
+        text: 'loki: I AM YOUR GOD!'
+    Button:
+        id: hulk
+        text: "press to smash loki"
+        on_release: root.hulk_smash()
+
+<MainGame>:
+
+    canvas:
+        Rectangle:
+            pos: 0, self.center_y - 5
+            size: self.width, 10
+    Scoreboard:
+        pos: 0, root.top/2
+    Actions:
+        pos: 100, 100
