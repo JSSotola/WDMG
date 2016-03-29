@@ -105,6 +105,7 @@ class MainWindow(BoxLayout):
         main.add_widget(button)
 
     def shop(self, main):
+        main.clear_widgets()
         label = Label(text="What would you like to buy?")
         main.add_widget(label)
 
