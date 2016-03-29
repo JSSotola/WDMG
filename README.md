@@ -2,4 +2,4 @@
 
 A Kivy branch.
 
-Implemented a basic scoreboard and currency exchange.
+Implemented a basic scoreboard, shop, and currency exchange.
