@@ -51,6 +51,18 @@ class MainGame(Widget):
 class Actions(BoxLayout):
     def exchange(self, parent):
         MainWindow.exchange(self, parent.main)
+
+    def shop(self, parent):
+        MainWindow.shop(self, parent.main)
+
+    def debug(self, parent):
+        parent.score.debug = not parent.score.debug
+        if parent.score.debug == True:
+            parent.score.ids.debug.text = "Debugging ON"
+            #ATM this does not do anything.
+        else:
+            parent.score.ids.debug.text = "Debugging OFF"
+
     def restart(self, parent):
         parent.score.restart()
 
@@ -92,6 +104,17 @@ class MainWindow(BoxLayout):
         button = Button(text="0")
         main.add_widget(button)
 
+    def shop(self, main):
+        label = Label(text="What would you like to buy?")
+        main.add_widget(label)
+
+        box = BoxLayout()
+        main.add_widget(box)
+        for i in range(5):
+            item = Button(text="Item "+str(i))
+            box.add_widget(item)
+        button = Button(text="0")
+        main.add_widget(button)
 
 
 

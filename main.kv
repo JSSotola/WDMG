@@ -33,7 +33,7 @@
         id: debug
         font_size: 20
         pos: self.width/2, root.top*0.65
-        text: "Debuging OFF"
+        text: "Debugging OFF"
 
 
 <Actions>
@@ -49,6 +49,16 @@
         id: exchange
         text: "Currency exchange"
         on_release: root.exchange(root.parent)
+
+    Button:
+        id: shop
+        text: "Shop"
+        on_release: root.shop(root.parent)
+
+    Button:
+        id: debug
+        text: "Debug ON/OFF"
+        on_release: root.debug(root.parent)
 
     Button:
         id: restart
