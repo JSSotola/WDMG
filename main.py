@@ -8,7 +8,7 @@ from kivy.uix.label import Label
 from kivy.uix.button import Button
 from kivy.uix.textinput import TextInput
 import random
-
+import time
 
 
 #Main game class that keeps track of game variable+s
@@ -20,6 +20,7 @@ class Scoreboard(Widget):
     income = NumericProperty(0) #In BTC
     btc_rate = NumericProperty(300) # exchange rate in dollars
     equipment = DictProperty()
+    tor_enabled = BooleanProperty(False)
 
     #Workaround. Didn't figure out any other way. Feel free to fix this.
     def restart(self):
@@ -38,12 +39,12 @@ class MainGame(Widget):
 
     def update(self, dt):
         self.t
-        if self.t < 60:
+        if self.t < 200:
             self.t += 1
         else:
             self.t = 0
 
-        if self.t%60 == 0:
+        if self.t%200 == 0:
             self.score.btc_rate = round(self.score.btc_rate+random.randint(-100,110)/10, 1)
 
 
@@ -55,21 +56,55 @@ class Actions(BoxLayout):
     def shop(self, parent):
         MainWindow.shop(self, parent.main)
 
+    def market(self, parent):
+        MainWindow.market(self,parent.main)
+
     def debug(self, parent):
         parent.score.debug = not parent.score.debug
         if parent.score.debug == True:
             parent.score.ids.debug.text = "Debugging ON"
-            #ATM this does not do anything.
+            labeldeb = Label(text="More debugging \n information coming\n soon...\n \ntor_enabled:"+str(parent.score.tor_enabled), pos = (parent.score.width/4, parent.score.top*0.4))
+            parent.score.add_widget(labeldeb)
+
         else:
             parent.score.ids.debug.text = "Debugging OFF"
+            #doesnt remove debug info atm
 
     def restart(self, parent):
         parent.score.restart()
 
 class MainWindow(BoxLayout):
     orientation = 'vertical'
+
+    def market(self, main):
+        if main.parent.score.tor_enabled == False:
+
+            def addwidgetlabel1(self):
+                main.add_widget(label1)
+
+            #shouldbe just one function. This is a workaround. Figure out how to pass something to callback in Clock.schedule
+            def addwidgetlabel2(self):
+                main.add_widget(label2)
+
+            def addwidgetlabel3(self):
+                main.add_widget(label3)
+
+            main.clear_widgets()
+            label1 = Label(text="Connecting...")
+            Clock.schedule_once(addwidgetlabel1, 0.1)
+            label2 = Label(text="Error. Retrying...")
+            Clock.schedule_once(addwidgetlabel2, 0.7)
+
+            label3 = Label(text="Connection failed: You need to install TOR in order to connect to the dark markets.")
+            Clock.schedule_once(addwidgetlabel3, 1.5)
+        else:
+            pass
+            #here market code will go
+
+
     def exchange(self, main):
         main.clear_widgets()
+
 
         def on_text(instance, value):
             try:
@@ -77,7 +112,8 @@ class MainWindow(BoxLayout):
                 if buy>0:
                     button.text = "Buy "+str(buy)+" BTC for "+str(buy*self.parent.score.btc_rate)+"$"
                     if self.parent.score.dollars >= buy * self.parent.score.btc_rate:
-                        button.bind(on_release= buy_BTC(buy)) # for some reason this does not wait for button press but executes imideatly
+                        button.bind(on_release=buy_BTC()) # for some reason this does not wait for button press but executes imideatly
+                        #SOLUTION: Maybe move bind to the main part, not on_text.
                     else:
                         print("Nout enought money")
                 elif buy<0:
@@ -114,7 +150,7 @@ class MainWindow(BoxLayout):
         for i in range(5):
             item = Button(text="Item "+str(i))
             box.add_widget(item)
-        button = Button(text="0")
+        button = Button(text="You can click here, but it does nothing.")
         main.add_widget(button)
 
 
