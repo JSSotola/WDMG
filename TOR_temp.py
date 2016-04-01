@@ -1,6 +1,7 @@
 #TEMP FILE
 #Example of connecting to TOR. Need to get rid of junk and then main.py will call tor.py which will return true or false based on tor availibility.
-#Source: https://stem.torproject.org/tutorials/to_russia_with_love.html
+#Source: https://stem.torproject.org/tutorials/to_russia_with_love.
+#Seems to work only the first time it is run, probably has to do with the way it stops the TOR service. Need to investigate.
 import io
 import pycurl
 
