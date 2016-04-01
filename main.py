@@ -112,7 +112,7 @@ class MainWindow(BoxLayout):
                 if buy>0:
                     button.text = "Buy "+str(buy)+" BTC for "+str(buy*self.parent.score.btc_rate)+"$"
                     if self.parent.score.dollars >= buy * self.parent.score.btc_rate:
-                        button.bind(on_release=buy_BTC()) # for some reason this does not wait for button press but executes imideatly
+                        button.bind(on_release=buy_BTC(buy)) # for some reason this does not wait for button press but executes imideatly
                         #SOLUTION: Maybe move bind to the main part, not on_text.
                     else:
                         print("Nout enought money")
