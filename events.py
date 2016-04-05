@@ -10,8 +10,8 @@ def change_bitcoin(self, amount):
     self.score.bitcoins += amount
     
 #Can be used to either increase or decrease player's amount of dollars.
-def change_dollars(amount):
-    pass
+def change_dollars(self, amount):
+    self.score.dollars += amount
 
 
 #Used to change gamestate to arrested state
