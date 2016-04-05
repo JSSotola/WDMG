@@ -66,6 +66,11 @@
         on_release: root.debug(root.parent)
 
     Button:
+        id: event
+        text: "Opens a random event"
+        on_release: root.event(root.parent)
+
+    Button:
         id: restart
         text: "Restart the game"
         on_release: root.restart(self.parent.parent)

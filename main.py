@@ -4,6 +4,7 @@ from kivy.properties import NumericProperty, BooleanProperty, DictProperty, Refe
 from kivy.vector import Vector
 from kivy.clock import Clock
 from kivy.uix.boxlayout import BoxLayout
+from kivt.uix.floatlayout import FloatLayout
 from kivy.uix.label import Label
 from kivy.uix.button import Button
 from kivy.uix.textinput import TextInput
@@ -11,6 +12,7 @@ import random
 from pandas import read_csv
 import time
 import events
+
 
 #Main game class that keeps track of game variable+s
 class Scoreboard(Widget):
@@ -38,6 +40,7 @@ class MainGame(Widget):
     actions = ObjectProperty(None)
     main = ObjectProperty(None)
 
+
     def load_events(self):
         self.events = read_csv('events.csv', delimiter=';')
         events.change_bitcoin(self, 1000)
@@ -53,7 +56,8 @@ class MainGame(Widget):
         if self.t%200 == 0:
             self.score.btc_rate = round(self.score.btc_rate+random.randint(-100,110)/10, 1)
 
-
+class Events(FloatLayout):
+    pass
 
 class Actions(BoxLayout):
     def exchange(self, parent):
@@ -75,7 +79,8 @@ class Actions(BoxLayout):
         else:
             parent.score.ids.debug.text = "Debugging OFF"
             #doesnt remove debug info atm
-
+    def event(self, parent):
+        pass
     def restart(self, parent):
         parent.score.restart()
 
