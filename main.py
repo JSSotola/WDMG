@@ -55,8 +55,6 @@ class MainGame(Widget):
         if self.t%200 == 0:
             self.score.btc_rate = round(self.score.btc_rate+random.randint(-100,110)/10, 1)
 
-class Events(FloatLayout):
-    pass
 
 class Actions(BoxLayout):
     def exchange(self, parent):
@@ -80,12 +78,20 @@ class Actions(BoxLayout):
             #doesnt remove debug info atm
     def event(self, parent):
         events.change_bitcoin(self.parent, 1000)
+        Events.event(self, self.parent)
+
     def restart(self, parent):
         parent.score.restart()
 
+class Events(FloatLayout):
+    def event(self, parent):
+
+        button = Button(text='Hello world', pos = (parent.width/2, parent.top/2))
+        parent.add_widget(button)
+
+
 class MainWindow(BoxLayout):
     orientation = 'vertical'
-
     def market(self, main):
         if main.parent.score.tor_enabled == False:
 
