@@ -41,7 +41,7 @@ class MainGame(Widget):
     def load_events(self):
         self.events = read_csv('events.csv', delimiter=';')
         events.change_bitcoin(self, 1000)
-
+        print("A")
 
     def update(self, dt):
         self.t
