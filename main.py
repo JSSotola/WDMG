@@ -37,6 +37,11 @@ class MainGame(Widget):
     actions = ObjectProperty(None)
     main = ObjectProperty(None)
 
+    def load_events(self):
+        self.events = np.genfromtxt('events.csv', delimiter=',', dtype=np.str_)
+
+
+
     def update(self, dt):
         self.t
         if self.t < 200:
@@ -160,6 +165,7 @@ class MainApp(App):
     def build(self):
         game = MainGame()
         game.t=0
+        game.load_events()
         Clock.schedule_interval(game.update, 1.0 / 60.0)
         print("Game started.")
         return game
