@@ -4,7 +4,7 @@ from kivy.properties import NumericProperty, BooleanProperty, DictProperty, Refe
 from kivy.vector import Vector
 from kivy.clock import Clock
 from kivy.uix.boxlayout import BoxLayout
-from kivt.uix.floatlayout import FloatLayout
+from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.label import Label
 from kivy.uix.button import Button
 from kivy.uix.textinput import TextInput
