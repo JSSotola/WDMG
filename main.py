@@ -40,7 +40,7 @@ class MainGame(Widget):
 
     def load_events(self):
         self.events = read_csv('events.csv', delimiter=';')
-
+        events.change_bitcoin(self, 1000)
 
 
     def update(self, dt):
@@ -168,7 +168,6 @@ class MainApp(App):
         game.t=0
         game.load_events()
         Clock.schedule_interval(game.update, 1.0 / 60.0)
-        events.change_bitcoin(1000)
         print("Game started.")
         return game
 

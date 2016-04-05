@@ -6,8 +6,8 @@ def cointoss(probability):
 
 
 #Can be used to either increase or decrease player's amount of bitcoin
-def change_bitcoin(amount):
-    root.game.score.bitcoin += amount
+def change_bitcoin(self, amount):
+    self.score.bitcoins += amount
     
 #Can be used to either increase or decrease player's amount of dollars.
 def change_dollars(amount):
