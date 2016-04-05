@@ -42,8 +42,7 @@ class MainGame(Widget):
 
 
     def load_events(self):
-        self.events = read_csv('events.csv', delimiter=';')
-        events.change_bitcoin(self, 1000)
+        self.list_events = read_csv('events.csv', delimiter=';')
         print("Aa")
 
     def update(self, dt):
@@ -80,7 +79,7 @@ class Actions(BoxLayout):
             parent.score.ids.debug.text = "Debugging OFF"
             #doesnt remove debug info atm
     def event(self, parent):
-        pass
+        events.change_bitcoin(self.parent, 1000)
     def restart(self, parent):
         parent.score.restart()
 
