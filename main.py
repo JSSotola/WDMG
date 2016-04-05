@@ -8,6 +8,7 @@ from kivy.uix.label import Label
 from kivy.uix.button import Button
 from kivy.uix.textinput import TextInput
 import random
+from pandas import read_csv
 import time
 
 
@@ -38,7 +39,7 @@ class MainGame(Widget):
     main = ObjectProperty(None)
 
     def load_events(self):
-        self.events = np.genfromtxt('events.csv', delimiter=',', dtype=np.str_)
+        self.events = read_csv('events.csv', delimiter=';')
 
 
 
