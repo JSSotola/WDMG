@@ -10,7 +10,7 @@ from kivy.uix.textinput import TextInput
 import random
 from pandas import read_csv
 import time
-
+import events
 
 #Main game class that keeps track of game variable+s
 class Scoreboard(Widget):
@@ -121,7 +121,7 @@ class MainWindow(BoxLayout):
                         button.bind(on_release=buy_BTC(buy)) # for some reason this does not wait for button press but executes imideatly
                         #SOLUTION: Maybe move bind to the main part, not on_text.
                     else:
-                        print("Nout enought money")
+                        print("Not enough money")
                 elif buy<0:
                     button.text = "Sell " + str(-buy) + " BTC for " + str(-buy*self.parent.score.btc_rate)+"$"
                     if self.parent.score.bitcoins >= -buy:
@@ -168,9 +168,11 @@ class MainApp(App):
         game.t=0
         game.load_events()
         Clock.schedule_interval(game.update, 1.0 / 60.0)
+        events.change_bitcoin(1000)
         print("Game started.")
         return game
 
 
 if __name__ == '__main__':
     MainApp().run()
+
