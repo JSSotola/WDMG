@@ -11,6 +11,8 @@ from kivy.uix.textinput import TextInput
 from kivy.uix.modalview import ModalView
 from kivy.uix.popup import Popup
 from kivy.uix.scrollview import ScrollView
+from kivy.properties import StringProperty
+from kivy.lang import Builder
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.video import Video
 from kivy.uix.image import Image
@@ -21,6 +23,19 @@ import events
 import shop_function
 import numpy as np
 
+
+Builder.load_string('''
+<ScrollableLabel>:
+    Label:
+        size_hint_y: None
+        height: self.texture_size[1]
+        text_size: self.width, None
+
+        text: root.text
+''')
+
+class ScrollableLabel(ScrollView):
+    text = StringProperty('')
 #test
 #Main game class that keeps track of game variables
 class Scoreboard(Widget):
@@ -80,6 +95,7 @@ class Actions(BoxLayout):
             parent.score.ids.debug.text = "Debugging ON"
             labeldeb = Label(text="More debugging \n information coming\n soon...\n \ntor_enabled:"+str(parent.score.tor_enabled), pos = (parent.score.width/4, parent.score.top*0.4))
             parent.score.add_widget(labeldeb)
+
         else:
             parent.score.ids.debug.text = "Debugging OFF"
             #doesnt remove debug info atm
@@ -97,25 +113,26 @@ class Events(FloatLayout):
         event=events[1] #this is where the event should be chosed, default is event 1
 
         box=BoxLayout()
-        #text = Label(valign="top", text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus odio nisi, pellentesque molestie adipiscing vitae, aliquam at tellus. Fusce quis est ornare erat pulvinar elementum ut sed felis. Donec vel neque mauris. In sit amet nunc sit amet diam dapibus lacinia. In sodales placerat mauris, ut euismod augue laoreet at. Integer in neque non odio fermentum volutpat nec nec nulla. Donec et risus non mi viverra posuere. Phasellus cursus augue purus, eget volutpat leo. Phasellus sed dui vitae ipsum mattis facilisis vehicula eu justo.\n\n Quisque neque dolor, egestas sed venenatis eget, porta id ipsum. Ut faucibus, massa vitae imperdiet rutrum, sem dolor rhoncus magna, non lacinia nulla risus non dui. Nulla sit amet risus orci. Nunc libero justo, interdum eu pulvinar vel, pulvinar et lectus. Phasellus sed luctus diam. Pellentesque non feugiat dolor. Cras at dolor velit, gravida congue velit. Aliquam erat volutpat. Nullam eu nunc dui, quis sagittis dolor. Ut nec dui eget odio pulvinar placerat. Pellentesque mi metus, tristique et placerat ac, pulvinar vel quam. Nam blandit magna a urna imperdiet molestie. Nullam ut nisi eget enim laoreet sodales sit amet a felis.\n")
-        text=Label(valign="top", text=event[2])
-        text.bind(size=lambda s, w: s.setter('text_size')(s, w))
+        #text = ScrollableLabel(text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus odio nisi, pellentesque molestie adipiscing vitae, aliquam at tellus. Fusce quis est ornare erat pulvinar elementum ut sed felis. Donec vel neque mauris. In sit amet nunc sit amet diam dapibus lacinia. In sodales placerat mauris, ut euismod augue laoreet at. Integer in neque non odio fermentum volutpat nec nec nulla. Donec et risus non mi viverra posuere. Phasellus cursus augue purus, eget volutpat leo. Phasellus sed dui vitae ipsum mattis facilisis vehicula eu justo.\n\n Quisque neque dolor, egestas sed venenatis eget, porta id ipsum. Ut faucibus, massa vitae imperdiet rutrum, sem dolor rhoncus magna, non lacinia nulla risus non dui. Nulla sit amet risus orci. Nunc libero justo, interdum eu pulvinar vel, pulvinar et lectus. Phasellus sed luctus diam. Pellentesque non feugiat dolor. Cras at dolor velit, gravida congue velit. Aliquam erat volutpat. Nullam eu nunc dui, quis sagittis dolor. Ut nec dui eget odio pulvinar placerat. Pellentesque mi metus, tristique et placerat ac, pulvinar vel quam. Nam blandit magna a urna imperdiet molestie. Nullam ut nisi eget enim laoreet sodales sit amet a felis.\n")
+        text= ScrollableLabel(text=event[2])
+        #text.bind(size=lambda s, w: s.setter('text_size')(s, w))
 
         layout = GridLayout(cols=1)
-        # Make sure the height is such that there is something to scroll.
-        layout.bind(minimum_height=layout.setter(10))
-        layout.add_widget(text)
 
 
-        option1 = Button(text=event[6], size_hint=(0.1,0.1))
-        option2 = Button(text=event[8], size_hint=(0.1,0.1))
-        close = Button(text='Close me!', size_hint=(0.1,0.1))
+
+
+        option1 = Button(text=event[6], size_hint=(0.2,0.1))
+        option2 = Button(text=event[8], size_hint=(0.2,0.1))
+        close = Button(text='Close me!', size_hint=(0.2,0.1))
         video = Video(source='drugvideo.mp4')
         image = Image(source='currencydepreciation.jpg')
 
 
-        layout.add_widget(video)
-        layout.add_widget(image)
+
+        layout.add_widget(text)
+        #layout.add_widget(image)
+        #layout.add_widget(video)
         layout.add_widget(option1)
         layout.add_widget(option2)
         layout.add_widget(close)
@@ -126,13 +143,25 @@ class Events(FloatLayout):
                       content=box,
                       size_hint=(0.7, 0.7))
 
+
+        #popup2
+        box2=BoxLayout()
+        layout2 = GridLayout(cols=1)
+        clickme= Button(text='Click Here', size_hint=(0.1,0.1))
+        layout2.add_widget(image)
+        layout2.add_widget(clickme)
+        box2.add_widget(layout2)
+        popup2 = Popup(title=event[1],
+                      content=box2,
+                      size_hint=(0.7, 0.7))
+
         # bind the on_press event of the button to the dismiss function
         close.bind(on_press=popup.dismiss)
+        clickme.bind(on_press=popup2.dismiss)
 
         popup.open()
+        #popup2.open()
 
-        if video.loaded:
-            video.play=True
 
 
 class MainWindow(BoxLayout):
