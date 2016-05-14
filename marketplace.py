@@ -3,6 +3,7 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.label import Label
 from kivy.uix.button import Button
+import events
 import numpy as np
 
 import TOR
@@ -50,7 +51,7 @@ def marketplace(self, main):
 
     #create buttons
     for i in range(1,main.items.shape[0]):
-        item = Button(text=(main.items[i,0]+"\n"+main.items[i,1]+"$"), id=np.str_(i), text_size=(self.width/(main.items.shape[0]+2), None))
+        item = Button(text=(main.items[i,0]+"\n"+main.items[i,1]+"BTC"), id=np.str_(i), text_size=(self.width/(main.items.shape[0]+2), None))
         item.bind(on_release=pressbutton)
         if i< 6:
             box.add_widget(item)
