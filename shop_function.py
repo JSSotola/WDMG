@@ -30,7 +30,6 @@ def shop(self, main):
     def pressbutton(instance):
 
         def trigger(confirm):
-            print(confirm)
             if confirm == True:
                 events.change_dollars(main.parent, -np.int(main.items[np.int(instance.id), 1]))
             else:

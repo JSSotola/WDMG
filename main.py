@@ -12,6 +12,8 @@ from kivy.uix.modalview import ModalView
 from kivy.uix.popup import Popup
 from kivy.uix.scrollview import ScrollView
 from kivy.uix.gridlayout import GridLayout
+from kivy.uix.video import Video
+from kivy.uix.image import Image
 import random
 from pandas import read_csv
 import time
@@ -102,14 +104,19 @@ class Events(FloatLayout):
 
         layout = GridLayout(cols=1)
         # Make sure the height is such that there is something to scroll.
-        layout.bind(minimum_height=layout.setter(50))
+        layout.bind(minimum_height=layout.setter(10))
         layout.add_widget(text)
 
 
         option1 = Button(text=event[6], size_hint=(0.1,0.1))
         option2 = Button(text=event[8], size_hint=(0.1,0.1))
         close = Button(text='Close me!', size_hint=(0.1,0.1))
+        video = Video(source='/home/sarai/WDMG/WDMG/drugvideo.mp4')
+        image = Image(source='/home/sarai/WDMG/WDMG/currencydepreciation.jpg')
 
+
+        layout.add_widget(video)
+        layout.add_widget(image)
         layout.add_widget(option1)
         layout.add_widget(option2)
         layout.add_widget(close)
@@ -124,6 +131,9 @@ class Events(FloatLayout):
         close.bind(on_press=popup.dismiss)
 
         popup.open()
+
+        if video.loaded:
+            video.play=True
 
 
 class MainWindow(BoxLayout):

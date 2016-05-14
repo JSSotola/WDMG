@@ -39,14 +39,18 @@ def popupconfirm(text, trigger):
 
 
 def popupmessage(text):
-    content = Label(text=text)
-    popup = Popup(title=event[1],
+    content = BoxLayout(orientation='vertical')
+    label = Label(text=text)
+    button = Button(text = "OK")
+    content.add_widget(label)
+    content.add_widget(button)
+    popup = Popup(title="",
                   content=content,
-                  size_hint=(0.7, 0.7))
+                  size_hint=(0.3, 0.5))
 
     # bind the on_press event of the button to the dismiss function
 
-    content.bind(on_press=popup.dismiss)
+    button.bind(on_press=popup.dismiss)
 
     popup.open()
 
