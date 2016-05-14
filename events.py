@@ -34,21 +34,29 @@ def killed():
     pass
 
 def popupconfirm(text):
-    print("A")
+    def returntrue(instace):
+        return True
+    def returnfalse(instance):
+        return False
     content = BoxLayout(orientation = 'vertical')
-    text = Label(text='Are you sure '+ text)
-    buttons = BoxLayout(orientation = 'horizontal')
-    yes_button = Button(text = "Yes")
-    no_button = Button(text = "No")
     popup = Popup(title='Confirmation',
                   content=content,
                   size_hint=(0.5, 0.3))
+
+    label_top = Label(text='Are you sure '+ text)
+    buttons = BoxLayout(orientation = 'horizontal')
+    yes_button = Button(text = "Yes")
+    yes_button.bind(on_press=returntrue)
+    yes_button.bind(on_release=popup.dismiss)
+    no_button = Button(text = "No")
+    no_button.bind(on_release=returnfalse)
+
     buttons.add_widget(yes_button)
     buttons.add_widget(no_button)
-    content.add_widget(text)
+    content.add_widget(label_top)
     content.add_widget(buttons)
     # bind the on_press event of the button to the dismiss function
-    content.bind(on_press=popup.dismiss)
 
+    #buttons.yes_button.bind(on_press=popup.dismiss)
     popup.open()
 
