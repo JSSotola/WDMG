@@ -19,7 +19,7 @@ def change_bitcoin(self, amount, notcheckzero=False):
 #Can be used to either increase or decrease player's amount of dollars.
 def change_dollars(self, amount, notcheckzero=False):
     if self.score.dollars < -amount and notcheckzero == False:
-        print("EROROR less that zero")  # should be a popup
+        print("EROROR less than zero")  # should be a popup
     else:
         self.score.dollars += amount
 
