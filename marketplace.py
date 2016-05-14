@@ -32,20 +32,15 @@ def marketplace(self, main):
     #define button press
     def pressbutton(instance):
 
-        def trigger(confirm):
-            if confirm:
-                bought = events.change_dollars(main.parent, -np.int(main.items[np.int(instance.id), 1]))
-                if bought:
-                    if main.items[instance.id,0] in main.parent.score.equipment:
-                        main.parent.score.equipment[main.items[instance.id, 0]] += 1
-                        events.generate_equipment_list(main.parent)
-                    else:
-                        main.parent.score.equipment[main.items[instance.id, 0]] = 1
-                        events.generate_equipment_list(main.parent)
-            else:
-                print("No selected")
 
-        events.popupconfirm("that you want to buy this", trigger)
+        bought = events.change_bitcoin(main.parent, -float(main.items[float(instance.id), 1]))
+        if bought:
+            if main.items[instance.id,0] in main.parent.score.equipment:
+                main.parent.score.equipment[main.items[instance.id, 0]] += 1
+                events.generate_equipment_list(main.parent)
+            else:
+                main.parent.score.equipment[main.items[instance.id, 0]] = 1
+                events.generate_equipment_list(main.parent)
 
 
     #create buttons

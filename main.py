@@ -49,7 +49,7 @@ class ScrollableLabel(ScrollView):
 class Scoreboard(Widget):
 
     dollars = NumericProperty(400 + random.randint(-150,200))
-    bitcoins = NumericProperty(0)
+    bitcoins = NumericProperty(50)
     debug = BooleanProperty(False)
     income = NumericProperty(0) #In BTC
     btc_rate = NumericProperty(300) # exchange rate in dollars

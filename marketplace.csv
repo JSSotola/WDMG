@@ -1,6 +1,6 @@
 name, price, description,Buy
-Ingredient 1,3, this is an item,1
-Ingredient 2,4, this is another item,1
-Drug 1,10, this is another item,0
-Drug 2,12, this is another item,0
-Drug 3,13, this is another item,0
+Ingredient 1,0.1, this is an item,1
+Ingredient 2,0.1, this is another item,1
+Drug 1,1, this is another item,0
+Drug 2,2, this is another item,0
+Drug 3,3, this is another item,0
