@@ -165,27 +165,33 @@ class MainWindow(BoxLayout):
 
     def exchange(self, main):
         main.clear_widgets() #clears the main window
-
-
+        main.buy=0
         def on_text(instance, value):
             try:
-                buy = float(value)
-                if buy>0:
-                    button.text = "Buy "+str(buy)+" BTC for "+str(buy*self.parent.score.btc_rate)+"$"
-                    if self.parent.score.dollars >= buy * self.parent.score.btc_rate:
-                        button.bind(on_release=buy_BTC(buy)) # for some reason this does not wait for button press but executes imideatly
-                        #SOLUTION: Maybe move bind to the main part, not on_text.
-                    else:
-                        print("Not enough money")
-                elif buy<0:
-                    button.text = "Sell " + str(-buy) + " BTC for " + str(-buy*self.parent.score.btc_rate)+"$"
-                    if self.parent.score.bitcoins >= -buy:
-                        button.bind(on_release=sell_BTC(-buy)) # for some reason this does not wait for button press but executes imideatly
-                    else:
-                        print("Not enough BTC")
+                main.buy = float(value)
+                if main.buy>0:
+                    button.text = "Buy "+str(main.buy)+" BTC for "+str(main.buy*self.parent.score.btc_rate)+"$"
+
+                elif main.buy<0:
+                    button.text = "Sell " + str(-main.buy) + " BTC for " + str(-main.buy*self.parent.score.btc_rate)+"$"
+
             except ValueError:
                 button.text = "You need to enter a number"
-
+        def buysell(instance):
+            try:
+                print(main.buy)
+                if main.buy > 0:
+                    if self.parent.score.dollars >= main.buy * self.parent.score.btc_rate:
+                        buy_BTC(main.buy)
+                    else:
+                        button.text = "Not enough money"
+                elif main.buy < 0:
+                    if self.parent.score.bitcoins >= -main.buy:
+                        sell_BTC(-main.buy)
+                    else:
+                        button.text = "Not enough BTC"
+            except ValueError:
+                button.text = "You need to enter a number"
         def sell_BTC(sell):
                 self.parent.score.bitcoins -= sell
                 self.parent.score.dollars += sell * self.parent.score.btc_rate
@@ -199,6 +205,7 @@ class MainWindow(BoxLayout):
         textinput.bind(text=on_text)
         main.add_widget(textinput)
         button = Button(text="0")
+        button.bind(on_release=buysell)
         main.add_widget(button)
 
     def shop(self, main):
