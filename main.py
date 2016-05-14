@@ -14,9 +14,10 @@ import random
 from pandas import read_csv
 import time
 import events
+import shop_function
 
 #test
-#Main game class that keeps track of game variable+s
+#Main game class that keeps track of game variables
 class Scoreboard(Widget):
 
     dollars = NumericProperty(400 + random.randint(-150,200))
@@ -45,7 +46,7 @@ class MainGame(Widget):
 
     def load_events(self):
         self.list_events = read_csv('events.csv', delimiter=';')
-        print("Aa")
+        print("Loaded events")
 
     def update(self, dt):
         self.t
@@ -130,7 +131,7 @@ class MainWindow(BoxLayout):
 
 
     def exchange(self, main):
-        main.clear_widgets()
+        main.clear_widgets() #clears the main window
 
 
         def on_text(instance, value):
@@ -168,18 +169,7 @@ class MainWindow(BoxLayout):
         main.add_widget(button)
 
     def shop(self, main):
-        main.clear_widgets()
-        label = Label(text="What would you like to buy?")
-        main.add_widget(label)
-
-        box = BoxLayout()
-        main.add_widget(box)
-        for i in range(5):
-            item = Button(text="Item "+str(i))
-            box.add_widget(item)
-        button = Button(text="You can click here, but it does nothing.")
-        main.add_widget(button)
-
+        shop_function.shop(self, main)
 
 
 

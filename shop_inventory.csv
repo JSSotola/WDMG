@@ -1,11 +1,6 @@
-number,name,cost,description,income,other effects,available if ,bigger than,notes
-1,cheap laptop,200,A cheap laptop that can be used to connect to the internet or mine bitcoins,0.001,,,,
-2,MacBook,1000,An expensive laptop that can be used to connect to the internet or mine bitcoins,0.002,,,,
-3,something,1,only unlocks after 10s of play,,,time,10,
-4,Basic chemistry set,50,Can be used to manufacture methamphetamine,,,,,Requires a recipe bought at the market to be used.
-5,placeholder,,,,,,,
-6,,,,,,,,
-7,,,,,,,,
-8,,,,,,,,
-9,,,,,,,,
-10,,,,,,,,
+name,cost,description,income,other effects,available if ,bigger than,notes
+cheap laptop,200,A cheap laptop that can be used to connect to the internet or mine bitcoins,0.001,,,,
+MacBook,1000,An expensive laptop that can be used to connect to the internet or mine bitcoins,0.002,,,,
+something,1,only unlocks after 10s of play,,,time,10,
+Basic chemistry set,50,Can be used to manufacture methamphetamine,,,,,Requires a recipe bought at the market to be used.
+placeholder,,,,,,,
