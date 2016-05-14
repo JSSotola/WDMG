@@ -48,12 +48,12 @@ def marketplace(self, main):
         events.popupconfirm("that you want to buy this", trigger)
 
 
-
     #create buttons
     for i in range(1,main.items.shape[0]):
         item = Button(text=(main.items[i,0]+"\n"+main.items[i,1]+"BTC"), id=np.str_(i), text_size=(self.width/(main.items.shape[0]+2), None))
         item.bind(on_release=pressbutton)
-        if i< 6:
+        print(main.items[i,3])
+        if main.items[i,3] == 1:
             box.add_widget(item)
         else:
             box2.add_widget(item)
