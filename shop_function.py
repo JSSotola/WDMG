@@ -1,3 +1,4 @@
+
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.label import Label
 from kivy.uix.button import Button
@@ -25,7 +26,7 @@ def shop(self, main):
     main.add_widget(box)
 
     for i in range(1,main.items.shape[0]):
-        item = Button(text=(main.items[i,0]+"\n"+main.items[i,1]))
+        item = Button(text=(main.items[i,0]+"\n" ))
         box.add_widget(item)
     button = Button(text="You can click here, but it does nothing.")
     main.add_widget(button)
