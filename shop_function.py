@@ -26,3 +26,5 @@ def shop(self, main):
         box.add_widget(item)
     button = Button(text="You can click here, but it does nothing.")
     main.add_widget(button)
+
+    #TEST
