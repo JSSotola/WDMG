@@ -51,6 +51,3 @@ def shop(self, main):
             box.add_widget(item)
         else:
             box2.add_widget(item)
-
-
-    #TEST
