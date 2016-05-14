@@ -20,7 +20,7 @@ def marketplace(self, main):
     main.items = load_events()
 
 
-    label = Label(text="The net is dark and full of errors...")
+    label = Label(text = "The net is dark and full of errors...")
     main.add_widget(label)
 
     box = BoxLayout()
