@@ -78,7 +78,9 @@ def change_dollars(self, amount, notcheckzero=False):
         self.score.dollars += amount
         return True
 def generate_equipment_list(self):
-    pass
+    self.score.equipment_list = "Items: \n"
+    for i in self.score.equipment.keys():
+        self.score.equipment_list += str(i)+ ': ' +str(self.score.equipment[i])+ "\n"
 #Used to change gamestate to arrested state
 def arrested():
     pass
