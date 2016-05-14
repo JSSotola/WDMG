@@ -12,7 +12,7 @@ import random
 from pandas import read_csv
 import time
 import events
-import shop
+import shop_function
 
 #test
 #Main game class that keeps track of game variables
@@ -44,7 +44,7 @@ class MainGame(Widget):
 
     def load_events(self):
         self.list_events = read_csv('events.csv', delimiter=';')
-        print("Aa")
+        print("Loaded events")
 
     def update(self, dt):
         self.t
@@ -158,8 +158,7 @@ class MainWindow(BoxLayout):
         main.add_widget(button)
 
     def shop(self, main):
-        shop.shop(self, main)
-
+        shop_function.shop(self, main)
 
 
 
