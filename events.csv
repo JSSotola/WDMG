@@ -6,10 +6,10 @@ id;event_title;event_text;media;media_type;event_effect;option_1_text;option_1_d
 4;Package has been intercepted!;Your package has been intercepted by the authorities.;Image of ThermoFisher (drug detector);Detector.png (picture) - Detector2.png (picture);You lose X amount of money;;;;;
 5;Drug lab has been discovered!;The location of your drug lab has been discovered, and it has been raided. ;;;You lose X amount of money OR game over;;;;;
 6;Incoming house search!;You have been tipped off by one of the Pied Piper admins: you're house is about to get searched! Time is of the essence.;;;Pacman;;;;;
-7;;;;;;;;;;
-8;;;;;;;;;;
-9;;;;;;;;;;
-10;;;;;;;;;;
+7;You win a beauty contest!;You have finally caved after years of peer pressure and particate in the local, annual Beauty Pagent. After various rounds of parading in gliterry swimwear, shaking your ass while dancing the bachata and answering questions using generic terms you have convinced the Jury that you are indeed the one. You win 500 dollars and a year long supply of Yogi Tea. ;;;;;;;;
+8;It's your birthday!;You're getting older, which besides another day closer to dying also means that you get lots of presents. Here are 100 dollars from your grandma. ;;;;;;;;
+9;Last night you got drunk and…;Now you have a Tweety Bird tattoo in a private place. That's gonna cost you 150 bucks for choosing bad friends. ;;;;;;;;
+10;Health insurance;50 dollar;;;;;;;;
 11;;;;;;;;;;
 12;;;;;;;;;;
 13;;;;;;;;;;
