@@ -15,6 +15,7 @@ from pandas import read_csv
 import time
 import events
 import shop_function
+import numpy as np
 
 #test
 #Main game class that keeps track of game variables
@@ -88,7 +89,7 @@ class Actions(BoxLayout):
 
 class Events(FloatLayout):
     def event(self, parent):
-
+        events = np.genfromtxt('events.csv', delimiter=';', dtype=np.str_)
 
         content = Button(text='Close me!')
 
