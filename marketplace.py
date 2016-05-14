@@ -46,9 +46,10 @@ def marketplace(self, main):
     #create buttons
     for i in range(1,main.items.shape[0]):
         item = Button(text=(main.items[i,0]+"\n"+main.items[i,1]+"BTC"), id=np.str_(i), text_size=(self.width/(main.items.shape[0]+2), None))
+        if main.items[i,3] == "1":
         item.bind(on_release=pressbutton)
 
-        if main.items[i,3] == "1":
+
             box.add_widget(item)
         else:
             box2.add_widget(item)
