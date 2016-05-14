@@ -1,6 +1,6 @@
 name,cost,description,income,other effects,available if ,bigger than,notes
 cheap laptop,200,A cheap laptop that can be used to connect to the internet or mine bitcoins,0.001,,,,
 MacBook,1000,An expensive laptop that can be used to connect to the internet or mine bitcoins,0.002,,,,
-something,1,only unlocks after 10s of play,,,time,10,
+Gaming rig,5000,only unlocks after 10s of play,0.004,,time,10,
 Basic chemistry set,50,Can be used to manufacture methamphetamine,,,,,Requires a recipe bought at the market to be used.
-placeholder,0,,,,,,
+Advanced chemistry set,500,Can be used to manufacture all your naughty goods,,,,,
