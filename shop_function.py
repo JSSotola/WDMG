@@ -5,7 +5,7 @@ from kivy.uix.button import Button
 from pandas import read_csv
 import events
 import numpy as np
-
+import time
 
 
 def load_events():
@@ -28,16 +28,23 @@ def shop(self, main):
 
     #define button press
     def pressbutton(instance):
-        if events.popupconfirm("that you want to buy this") == True:
-            events.change_dollars(main.parent, -np.int(main.items[np.int(instance.id),1]))
+
+        def trigger(confirm):
+            print(confirm)
+            if confirm == True:
+                events.change_dollars(main.parent, -np.int(main.items[np.int(instance.id), 1]))
+            else:
+                print("No selected")
+
+
+        events.popupconfirm("that you want to buy this", trigger)
+
+
 
     #create buttons
     for i in range(1,main.items.shape[0]):
         item = Button(text=(main.items[i,0]+"\n"+main.items[i,1]+"$"), id=np.str_(i), text_size=(self.width/(main.items.shape[0]+2), None))
-        print(main.items[i, 1].astype(int))
-        item.bind(on_press=pressbutton)
-
-        events.change_dollars(main.parent, -100)
+        item.bind(on_release=pressbutton)
         box.add_widget(item)
     button = Button(text="You can click here, but it does nothing.")
     main.add_widget(button)
