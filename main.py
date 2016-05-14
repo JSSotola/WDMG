@@ -119,7 +119,7 @@ class MainWindow(BoxLayout):
 
 
     def exchange(self, main):
-        main.clear_widgets()
+        main.clear_widgets() #clears the main window
 
 
         def on_text(instance, value):
@@ -157,7 +157,7 @@ class MainWindow(BoxLayout):
         main.add_widget(button)
 
     def shop(self, main):
-        main.clear_widgets()
+        main.clear_widgets() #clears the main window
         label = Label(text="What would you like to buy?")
         main.add_widget(label)
 
