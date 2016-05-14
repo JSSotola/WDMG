@@ -38,7 +38,6 @@ def shop(self, main):
             else:
                 print("No selected")
 
-
         events.popupconfirm("that you want to buy this", trigger)
 
 
