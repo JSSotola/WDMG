@@ -8,6 +8,8 @@ from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.label import Label
 from kivy.uix.button import Button
 from kivy.uix.textinput import TextInput
+from kivy.uix.modalview import ModalView
+from kivy.uix.popup import Popup
 import random
 from pandas import read_csv
 import time
@@ -86,8 +88,17 @@ class Actions(BoxLayout):
 class Events(FloatLayout):
     def event(self, parent):
 
-        button = Button(text='Hello world', pos = (parent.width/2, parent.top/2))
-        parent.add_widget(button)
+
+        content = Button(text='Close me!')
+
+        popup = Popup(title='Test popup',
+                      content=content,
+                      size_hint=(0.7, 0.7))
+
+        # bind the on_press event of the button to the dismiss function
+        content.bind(on_press=popup.dismiss)
+
+        popup.open()
 
 
 class MainWindow(BoxLayout):
