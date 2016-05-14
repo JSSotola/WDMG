@@ -89,16 +89,29 @@ class Actions(BoxLayout):
 
 class Events(FloatLayout):
     def event(self, parent):
+
         events = np.genfromtxt('events.csv', delimiter=';', dtype=np.str_)
+        event=events[1] #this is where the event should be chosed, default is event 1
 
-        content = Button(text='Close me!')
+        box=BoxLayout()
+        text = Label(text=event[2])
+        text.bind(size=lambda s, w: s.setter('text_size')(s, w))
 
-        popup = Popup(title='Test popup',
-                      content=content,
+        option1 = Button(text=event[6], size_hint=(0.1,0.1))
+        option2 = Button(text=event[8], size_hint=(0.1,0.1))
+        close = Button(text='Close me!', size_hint=(0.1,0.1))
+
+        box.add_widget(option1)
+        box.add_widget(option2)
+        box.add_widget(close)
+        box.add_widget(text)
+
+        popup = Popup(title=event[1],
+                      content=box,
                       size_hint=(0.7, 0.7))
 
         # bind the on_press event of the button to the dismiss function
-        content.bind(on_press=popup.dismiss)
+        close.bind(on_press=popup.dismiss)
 
         popup.open()
 
