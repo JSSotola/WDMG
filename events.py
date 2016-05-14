@@ -46,8 +46,7 @@ def popupmessage(text):
 
     # bind the on_press event of the button to the dismiss function
 
-
-    close.bind(on_press=popup.dismiss)
+    content.bind(on_press=popup.dismiss)
 
     popup.open()
 
