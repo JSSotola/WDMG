@@ -171,15 +171,9 @@ class MainWindow(BoxLayout):
                 main.buy = float(value)
                 if main.buy>0:
                     button.text = "Buy "+str(main.buy)+" BTC for "+str(main.buy*self.parent.score.btc_rate)+"$"
-                    if self.parent.score.dollars >= main.buy * self.parent.score.btc_rate:
-                        #button.bind(on_release=buy_BTC(buy)) # for some reason this does not wait for button press but executes imideatly
-                        pass
 
                 elif main.buy<0:
                     button.text = "Sell " + str(-main.buy) + " BTC for " + str(-main.buy*self.parent.score.btc_rate)+"$"
-                    if self.parent.score.bitcoins >= -main.buy:
-                        #button.bind(on_release=sell_BTC(-buy)) # for some reason this does not wait for button press but executes imideatly
-                        pass
 
             except ValueError:
                 button.text = "You need to enter a number"
@@ -190,12 +184,12 @@ class MainWindow(BoxLayout):
                     if self.parent.score.dollars >= main.buy * self.parent.score.btc_rate:
                         buy_BTC(main.buy)
                     else:
-                        print("Not enough money")
+                        button.text = "Not enough money"
                 elif main.buy < 0:
                     if self.parent.score.bitcoins >= -main.buy:
                         sell_BTC(-main.buy)
                     else:
-                        print("Not enough BTC")
+                        button.text = "Not enough BTC"
             except ValueError:
                 button.text = "You need to enter a number"
         def sell_BTC(sell):
