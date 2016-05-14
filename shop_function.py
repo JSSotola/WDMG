@@ -26,10 +26,12 @@ def shop(self, main):
     box = BoxLayout()
     main.add_widget(box)
 
+    #define button press
     def pressbutton(instance):
-        events.change_dollars(main.parent, -100)
-        print(instance.id)
+        #check that there is enough money for button press
+        events.change_dollars(main.parent, -np.int(main.items[np.int(instance.id),1]))
 
+    #create buttons
     for i in range(1,main.items.shape[0]):
         item = Button(text=(main.items[i,0]+"\n"+main.items[i,1]+"$"), id=np.str_(i))
         print(main.items[i, 1].astype(int))

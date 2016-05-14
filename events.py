@@ -6,12 +6,19 @@ def cointoss(probability):
 
 
 #Can be used to either increase or decrease player's amount of bitcoin
-def change_bitcoin(self, amount):
-    self.score.bitcoins += amount
+def change_bitcoin(self, amount, notcheckzero=False):
+    if self.score.bitcoins < -amount and notcheckzero==False:
+     print("EROROR less that zero") # should be a popup
+    else:
+        self.score.bitcoins += amount
+
     
 #Can be used to either increase or decrease player's amount of dollars.
-def change_dollars(self, amount):
-    self.score.dollars += amount
+def change_dollars(self, amount, notcheckzero=False):
+    if self.score.dollars < -amount and notcheckzero == False:
+        print("EROROR less that zero")  # should be a popup
+    else:
+        self.score.dollars += amount
 
 
 #Used to change gamestate to arrested state
