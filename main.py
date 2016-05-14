@@ -33,6 +33,11 @@ Builder.load_string('''
         text: root.text
 ''')
 
+#main variables
+
+minutes = 15
+timelimit = minutes*60*100
+
 class ScrollableLabel(ScrollView):
     text = StringProperty('')
 #test
@@ -47,6 +52,10 @@ class Scoreboard(Widget):
     equipment = DictProperty()
     equipment_list = StringProperty()
     tor_enabled = BooleanProperty(False)
+    risk = NumericProperty(0)
+    time = NumericProperty(0)
+    minutes = NumericProperty(0)
+    seconds = NumericProperty(0)
 
     #Workaround. Didn't figure out any other way. Feel free to fix this.
     def restart(self):
@@ -70,10 +79,14 @@ class MainGame(Widget):
 
     def update(self, dt):
         self.t
-        if self.t < 200:
+        self.score.time=self.t
+        self.score.minutes = int(self.t/6000)
+        self.score.seconds = int((self.t/100)%60)
+        if self.t < timelimit:
             self.t += 1
         else:
             self.t = 0
+            #endgame
 
         if self.t%200 == 0:
             self.score.btc_rate = round(self.score.btc_rate+random.randint(-100,110)/10, 1)
