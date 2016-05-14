@@ -29,14 +29,15 @@ def shop(self, main):
     #define button press
     def pressbutton(instance):
 
-        def trigger:
+        def trigger(confirm):
+            print(confirm)
             if confirm == True:
                 events.change_dollars(main.parent, -np.int(main.items[np.int(instance.id), 1]))
             else:
                 print("No selected")
 
 
-        confirm = events.popupconfirm("that you want to buy this", trigger)
+        events.popupconfirm("that you want to buy this", trigger)
 
 
 

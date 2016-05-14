@@ -35,10 +35,10 @@ def killed():
 
 def popupconfirm(text, trigger):
     def returntrue(instance):
-        trigger()
+        trigger(True)
         return True
     def returnfalse(instance):
-        trigger()
+        trigger(False)
         return False
     content = BoxLayout(orientation = 'vertical')
     popup = Popup(title='Confirmation',
