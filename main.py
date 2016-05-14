@@ -15,7 +15,7 @@ import events
 import shop
 
 #test
-#Main game class that keeps track of game variable+s
+#Main game class that keeps track of game variables
 class Scoreboard(Widget):
 
     dollars = NumericProperty(400 + random.randint(-150,200))
