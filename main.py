@@ -80,7 +80,6 @@ class Actions(BoxLayout):
             parent.score.ids.debug.text = "Debugging ON"
             labeldeb = Label(text="More debugging \n information coming\n soon...\n \ntor_enabled:"+str(parent.score.tor_enabled), pos = (parent.score.width/4, parent.score.top*0.4))
             parent.score.add_widget(labeldeb)
-
         else:
             parent.score.ids.debug.text = "Debugging OFF"
             #doesnt remove debug info atm
@@ -111,8 +110,8 @@ class Events(FloatLayout):
         option1 = Button(text=event[6], size_hint=(0.1,0.1))
         option2 = Button(text=event[8], size_hint=(0.1,0.1))
         close = Button(text='Close me!', size_hint=(0.1,0.1))
-        video = Video(source='/home/sarai/WDMG/WDMG/drugvideo.mp4')
-        image = Image(source='/home/sarai/WDMG/WDMG/currencydepreciation.jpg')
+        video = Video(source='drugvideo.mp4')
+        image = Image(source='currencydepreciation.jpg')
 
 
         layout.add_widget(video)
