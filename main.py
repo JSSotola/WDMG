@@ -45,6 +45,7 @@ class Scoreboard(Widget):
     income = NumericProperty(0) #In BTC
     btc_rate = NumericProperty(300) # exchange rate in dollars
     equipment = DictProperty()
+    equipment_list = StringProperty()
     tor_enabled = BooleanProperty(False)
 
     #Workaround. Didn't figure out any other way. Feel free to fix this.

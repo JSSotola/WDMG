@@ -8,11 +8,11 @@ import time
 def popupconfirm(text, trigger):
     def returntrue(instance):
         trigger(True)
-        return True
+
 
     def returnfalse(instance):
         trigger(False)
-        return False
+
 
     content = BoxLayout(orientation='vertical')
     popup = Popup(title='Confirmation',
@@ -64,18 +64,21 @@ def cointoss(probability):
 def change_bitcoin(self, amount, notcheckzero=False):
     if self.score.bitcoins < -amount and notcheckzero==False:
         popupmessage("Not enough Bitcoin!")
+        return False
     else:
         self.score.bitcoins += amount
-
+        return True
     
 #Can be used to either increase or decrease player's amount of dollars.
 def change_dollars(self, amount, notcheckzero=False):
     if self.score.dollars < -amount and notcheckzero == False:
         popupmessage("Not enough money!")
+        return False
     else:
         self.score.dollars += amount
-
-
+        return True
+def generate_equipment_list(self):
+    pass
 #Used to change gamestate to arrested state
 def arrested():
     pass
