@@ -15,6 +15,7 @@ def shop(self, main):
 
     #load items to shop
     main.items = load_events()
+    print(main.items)
 
     label = Label(text="What would you like to buy?")
     main.add_widget(label)
