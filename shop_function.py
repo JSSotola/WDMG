@@ -8,6 +8,7 @@ import numpy as np
 import time
 
 
+
 def load_events():
     list_events = np.genfromtxt('shop_inventory.csv', delimiter=',', dtype=np.str_)
     print("Loaded shop")
