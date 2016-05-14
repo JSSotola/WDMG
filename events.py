@@ -34,7 +34,7 @@ def killed():
     pass
 
 def popupconfirm(text):
-    def returntrue(instace):
+    def returntrue(instance):
         return True
     def returnfalse(instance):
         return False
