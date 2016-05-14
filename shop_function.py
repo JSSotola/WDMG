@@ -6,15 +6,15 @@ from pandas import read_csv
 
 
 def load_events():
-    self.list_events = read_csv('shop_inventory.csv', delimiter=';')
+    list_events = read_csv('shop_inventory.csv', delimiter=';')
     print("Loaded shop")
-
+    return list_events
 
 def shop(self, main):
     main.clear_widgets()  # clears the main window
 
     #load items to shop
-    shop.items = load_events()
+    main.items = load_events()
 
     label = Label(text="What would you like to buy?")
     main.add_widget(label)
