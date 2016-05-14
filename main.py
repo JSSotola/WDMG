@@ -131,6 +131,7 @@ class Events(FloatLayout):
     def event(self, parent):
 
         events = np.genfromtxt('events.csv', delimiter=';', dtype=np.str_)
+        print(events)
         event=events[1] #this is where the event should be chosed, default is event 1
 
         box=BoxLayout()
