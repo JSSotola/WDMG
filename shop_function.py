@@ -33,7 +33,7 @@ def shop(self, main):
 
     #create buttons
     for i in range(1,main.items.shape[0]):
-        item = Button(text=(main.items[i,0]+"\n"+main.items[i,1]+"$"), id=np.str_(i), text_size=(self.width/(main.items.shape[0]+2),None))
+        item = Button(text=(main.items[i,0]+"\n"+main.items[i,1]+"$"), id=np.str_(i), text_size=(self.width/(main.items.shape[0]+2), None))
         print(main.items[i, 1].astype(int))
         item.bind(on_press=pressbutton)
 
