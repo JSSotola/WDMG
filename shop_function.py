@@ -25,7 +25,9 @@ def shop(self, main):
     main.add_widget(label)
 
     box = BoxLayout()
+    box2 = BoxLayout()
     main.add_widget(box)
+    main.add_widget(box2)
 
     #define button press
     def pressbutton(instance):
@@ -45,8 +47,10 @@ def shop(self, main):
     for i in range(1,main.items.shape[0]):
         item = Button(text=(main.items[i,0]+"\n"+main.items[i,1]+"$"), id=np.str_(i), text_size=(self.width/(main.items.shape[0]+2), None))
         item.bind(on_release=pressbutton)
-        box.add_widget(item)
-    button = Button(text="You can click here, but it does nothing.")
-    main.add_widget(button)
+        if i< 6:
+            box.add_widget(item)
+        else:
+            box2.add_widget(item)
+
 
     #TEST
