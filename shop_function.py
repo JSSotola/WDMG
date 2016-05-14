@@ -3,6 +3,7 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.label import Label
 from kivy.uix.button import Button
 from pandas import read_csv
+import events
 import numpy as np
 
 
@@ -25,8 +26,16 @@ def shop(self, main):
     box = BoxLayout()
     main.add_widget(box)
 
+    def pressbutton(instance):
+        events.change_dollars(main.parent, -100)
+        print(instance.id)
+
     for i in range(1,main.items.shape[0]):
-        item = Button(text=(main.items[i,0]+"\n"+main.items[i,1]+"$"), )
+        item = Button(text=(main.items[i,0]+"\n"+main.items[i,1]+"$"), id=np.str_(i))
+        print(main.items[i, 1].astype(int))
+        item.bind(on_press=pressbutton)
+
+        events.change_dollars(main.parent, -100)
         box.add_widget(item)
     button = Button(text="You can click here, but it does nothing.")
     main.add_widget(button)
