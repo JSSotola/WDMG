@@ -12,6 +12,7 @@ import random
 from pandas import read_csv
 import time
 import events
+import shop
 
 #test
 #Main game class that keeps track of game variable+s
@@ -157,17 +158,7 @@ class MainWindow(BoxLayout):
         main.add_widget(button)
 
     def shop(self, main):
-        main.clear_widgets() #clears the main window
-        label = Label(text="What would you like to buy?")
-        main.add_widget(label)
-
-        box = BoxLayout()
-        main.add_widget(box)
-        for i in range(5):
-            item = Button(text="Item "+str(i))
-            box.add_widget(item)
-        button = Button(text="You can click here, but it does nothing.")
-        main.add_widget(button)
+        shop.shop(self, main)
 
 
 
