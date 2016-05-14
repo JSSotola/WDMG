@@ -40,6 +40,16 @@
         pos: self.width/2, root.top*0.4
         text: ""
 
+    Label:
+        font_size: 20
+        pos: self.width/2, root.top*0.35
+        text: "Risk level " + str(self.parent.risk)
+
+    Label:
+        font_size: 20
+        pos: self.width/2, root.top*0.3
+        text: "Timer " + str(self.parent.minutes) + ":" + str(self.parent.seconds)
+
 
 <Actions>
     size: self.parent.width, self.parent.top/4
