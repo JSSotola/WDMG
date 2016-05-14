@@ -37,6 +37,10 @@ Builder.load_string('''
 
 minutes = 15
 timelimit = minutes*60*100
+timefactor = 0.003
+dollarfactor = 0.01
+stealthfactor = 0.2
+
 
 class ScrollableLabel(ScrollView):
     text = StringProperty('')
@@ -52,10 +56,11 @@ class Scoreboard(Widget):
     equipment = DictProperty()
     equipment_list = StringProperty()
     tor_enabled = BooleanProperty(False)
-    risk = NumericProperty(0)
     time = NumericProperty(0)
     minutes = NumericProperty(0)
     seconds = NumericProperty(0)
+    stealth = NumericProperty(0)
+    risk = NumericProperty(0)
 
     #Workaround. Didn't figure out any other way. Feel free to fix this.
     def restart(self):
@@ -82,7 +87,10 @@ class MainGame(Widget):
         self.score.time=self.t
         self.score.minutes = int(self.t/6000)
         self.score.seconds = int((self.t/100)%60)
-        if self.t < timelimit:
+        self.score.risk = int((self.t * timefactor) + (self.score.dollars * dollarfactor) + (self.score.stealth * stealthfactor))
+
+
+        if self.t <= timelimit:
             self.t += 1
         else:
             self.t = 0
