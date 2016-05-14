@@ -179,7 +179,6 @@ class MainWindow(BoxLayout):
                 button.text = "You need to enter a number"
         def buysell(instance):
             try:
-                print(main.buy)
                 if main.buy > 0:
                     if self.parent.score.dollars >= main.buy * self.parent.score.btc_rate:
                         buy_BTC(main.buy)
@@ -193,11 +192,11 @@ class MainWindow(BoxLayout):
             except ValueError:
                 button.text = "You need to enter a number"
         def sell_BTC(sell):
-                self.parent.score.bitcoins -= sell
-                self.parent.score.dollars += sell * self.parent.score.btc_rate
+            events.change_dollars(main.parent, sell* self.parent.score.btc_rate)
+            events.change_bitcoin(main.parent, -sell)
         def buy_BTC(buy):
-            self.parent.score.bitcoins += buy
-            self.parent.score.dollars -= buy * self.parent.score.btc_rate
+            events.change_dollars(main.parent, -buy* self.parent.score.btc_rate)
+            events.change_bitcoin(main.parent, buy)
 
         label = Label(text="How much BTC do you want to buy?")
         main.add_widget(label)
