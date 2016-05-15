@@ -20,7 +20,7 @@ def TOR(main, trigger):
     # Would be much nicer if the player could watch it as the connection is being made
 
     def print_to_screen(text):
-        content.add_widget(Label(text=text, color=[0,128,0, 1]))
+        content.add_widget(Label(text=str(text), color=[0,128,0, 1]))
 
     print_to_screen("Connecting to TOR...")
 
