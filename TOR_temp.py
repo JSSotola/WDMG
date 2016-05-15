@@ -4,7 +4,6 @@
 #Seems to work only the first time it is run, probably has to do with the way it stops the TOR service. Need to investigate.
 import io
 import pycurl
-
 import stem.process
 
 from stem.util import term
@@ -47,7 +46,7 @@ print(term.format("Starting Tor:\n", term.Attr.BOLD))
 tor_process = stem.process.launch_tor_with_config(
   config = {
     'SocksPort': str(SOCKS_PORT),
-    'ExitNodes': '{ru}',
+    'ExitNodes': '{nl}',
   },
   init_msg_handler = print_bootstrap_lines,
 )

@@ -1,24 +1,20 @@
 from kivy.app import App
 from kivy.uix.widget import Widget
 from kivy.properties import NumericProperty, BooleanProperty, DictProperty, ReferenceListProperty, ObjectProperty
-from kivy.vector import Vector
 from kivy.clock import Clock
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.label import Label
 from kivy.uix.button import Button
 from kivy.uix.textinput import TextInput
-from kivy.uix.modalview import ModalView
 from kivy.uix.popup import Popup
 from kivy.uix.scrollview import ScrollView
 from kivy.properties import StringProperty
-from kivy.lang import Builder
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.video import Video
 from kivy.uix.image import Image
 import random
 from pandas import read_csv
-import time
 import events, shop_function, marketplace
 import numpy as np
 
@@ -40,6 +36,7 @@ timelimit = minutes*60*100
 timefactor = 0.003
 dollarfactor = 0.01
 stealthfactor = 0.2
+checkTOR = False
 
 
 class ScrollableLabel(ScrollView):
@@ -55,7 +52,7 @@ class Scoreboard(Widget):
     btc_rate = NumericProperty(300) # exchange rate in dollars
     equipment = DictProperty()
     equipment_list = StringProperty()
-    tor_enabled = BooleanProperty(False)
+    notcheckTOR = BooleanProperty(not checkTOR)
     time = NumericProperty(0)
     minutes = NumericProperty(0)
     seconds = NumericProperty(0)
