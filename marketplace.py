@@ -66,7 +66,7 @@ def trigger(main, TOR_working):
         box.add_widget(button2)
 
         def openTORweb(instance):
-            webbrowser.open("http://kivy.org/")
+            webbrowser.open("https://www.torproject.org/")
             main.clear_widgets()  # clears the main window
         button1.bind(on_release = openTORweb)
 
