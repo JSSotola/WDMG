@@ -125,8 +125,8 @@ class Actions(BoxLayout):
         else:
             parent.score.ids.debug.text = "Debugging OFF"
 
-    def event(self):
-        Events.event(self, self.parent)
+    def event(self, parent):
+        Events.event(self, parent)
 
     def restart(self, parent):
         parent.score.restart()
