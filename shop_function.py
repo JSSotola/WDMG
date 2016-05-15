@@ -34,11 +34,8 @@ def choose_event(DF_events):
     DF_len = len(DF_events.index) -1 # takes header into account so number of events is index-1
     event_number = randint(0, DF_len-1) # inclusive random integer selector
     event = DF_events.loc[event_number]
-    event_title = event.get('event_title')
 
-    print("this is the chosen event: " + event_title)
-
-    return
+    return event
 
 def shop(self, main):
     main.clear_widgets()  # clears the main window
