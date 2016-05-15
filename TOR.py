@@ -1,4 +1,7 @@
 pass
+
+#Needs to be implemented. See TOR_temp.py
+
 from kivy.clock import Clock
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.floatlayout import FloatLayout

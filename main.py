@@ -22,17 +22,18 @@ import time
 import events, shop_function, marketplace
 import numpy as np
 
-
+#To do
 #todo Finish marketplace. Implement better items.
 #todo Create a drug creation interface so players can sell something. Perhaps call it a druglab?
 #todo Finish TOR.
 #todo Finish item interface. Does not execute button actions ATM.
 #todo Finish shop items. Do not increase income ATM.
 #todo Play test?
+#todo Move class events to a separete file to keep the main.py short.
+#todo Make reset work better and fix for new implementations such as equipment and risk.
 
 
-#main variables
-
+#main variables settings
 minutes = 15
 timelimit = minutes*60*100
 timefactor = 0.003
@@ -42,7 +43,7 @@ stealthfactor = 0.2
 
 class ScrollableLabel(ScrollView):
     text = StringProperty('')
-#test
+
 #Main game class that keeps track of game variables
 class Scoreboard(Widget):
 
@@ -75,16 +76,19 @@ class MainGame(Widget):
     actions = ObjectProperty(None)
     main = ObjectProperty(None)
 
-
+    #loads list of events from csv, move to events class which should be moved to a separete file
     def load_events(self):
         self.list_events = read_csv('events.csv', delimiter=';')
         print("Loaded events")
 
+    #updates the game, executes every 1/60 of a second. See MainApp at the end of this file
     def update(self, dt):
         self.t
         self.score.time=self.t
         self.score.minutes = int(self.t/6000)
         self.score.seconds = int((self.t/100)%60)
+
+        #Risk inscrease
         self.score.risk = int((self.t * timefactor) + (self.score.dollars * dollarfactor) + (self.score.stealth * stealthfactor))
 
 
@@ -93,21 +97,26 @@ class MainGame(Widget):
         else:
             self.t = 0
             #endgame
+            #todo implement endgame
 
+        #Random walk for bitcoin to dollar rate. Slight bias towards increasing.
         if self.t%200 == 0:
             self.score.btc_rate = round(self.score.btc_rate+random.randint(-100,110)/10, 1)
 
 
+#defines button press actions for the lower bar
+#passes parent.main as the main game class to all functions so that functions can interface with the main game class
 class Actions(BoxLayout):
     def exchange(self, parent):
         MainWindow.exchange(self, parent.main)
 
     def shop(self, parent):
-        MainWindow.shop(self, parent.main)
+        MainWindow.shop(self, parent.main)#Should be called directly not through MainWindow
 
     def market(self, parent):
-        MainWindow.market(self,parent.main)
+        MainWindow.market(self,parent.main)#Should be called directly not through MainWindow
 
+    #Debuging inteface. Right now this does not do much. Might be important for play testing
     def debug(self, parent):
         parent.score.debug = not parent.score.debug
         if parent.score.debug == True:
@@ -118,13 +127,14 @@ class Actions(BoxLayout):
         else:
             parent.score.ids.debug.text = "Debugging OFF"
             #doesnt remove debug info atm
-    def event(self, parent):
-        events.change_bitcoin(self.parent, 1000)
+
+    def event(self):
         Events.event(self, self.parent)
 
     def restart(self, parent):
         parent.score.restart()
 
+#event class. Should be moved to a separete file to decluter this one.
 class Events(FloatLayout):
     def event(self, parent):
 
@@ -140,13 +150,11 @@ class Events(FloatLayout):
 
 
 
-
         option1 = Button(text=event[6], size_hint=(0.2,0.1))
         option2 = Button(text=event[8], size_hint=(0.2,0.1))
         close = Button(text='Close me!', size_hint=(0.2,0.1))
         video = Video(source='drugvideo.mp4')
         image = Image(source='currencydepreciation.jpg')
-
 
 
         layout.add_widget(text)
@@ -182,13 +190,14 @@ class Events(FloatLayout):
         #popup2.open()
 
 
-
+#the central 2/3 interface. Most other events and functions interface with this.
 class MainWindow(BoxLayout):
     orientation = 'vertical'
+
     def market(self, main):
-        marketplace.marketplace(self, main)
+        marketplace.marketplace(self, main)#Should be called directly not through MainWindow
 
-
+    #Perhaps also move this to a separate file?
     def exchange(self, main):
         main.clear_widgets() #clears the main window
         main.buy=0
@@ -234,10 +243,10 @@ class MainWindow(BoxLayout):
         main.add_widget(button)
 
     def shop(self, main):
-        shop_function.shop(self, main)
+        shop_function.shop(self, main)#Should be called directly not through MainWindow
 
 
-
+#Main game class and fucntion. Initialises the game.
 class MainApp(App):
     def build(self):
         game = MainGame()

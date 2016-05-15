@@ -32,7 +32,6 @@ def marketplace(self, main):
     #define button press
     def pressbutton(instance):
 
-
         bought = events.change_bitcoin(main.parent, -float(main.items[float(instance.id), 1]))
         if bought:
             if main.items[instance.id,0] in main.parent.score.equipment:
@@ -43,13 +42,13 @@ def marketplace(self, main):
                 events.generate_equipment_list(main.parent)
 
 
-    #create buttons
+    #create buttons from csv
     for i in range(1,main.items.shape[0]):
         item = Button(text=(main.items[i,0]+"\n"+main.items[i,1]+"BTC"), id=np.str_(i), text_size=(self.width/(main.items.shape[0]+2), None))
+
+        #check whether buy or sell type and assign to the appropriate row.
         if main.items[i,3] == "1":
             item.bind(on_release=pressbutton)
-
-
             box.add_widget(item)
         else:
             box2.add_widget(item)

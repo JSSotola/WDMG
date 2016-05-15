@@ -20,10 +20,11 @@ def shop(self, main):
     #load items to shop
     main.items = load_events()
 
-
+    #Title
     label = Label(text="What would you like to buy?")
     main.add_widget(label)
 
+    #add two rows of buttons
     box = BoxLayout()
     box2 = BoxLayout()
     main.add_widget(box)
@@ -31,7 +32,6 @@ def shop(self, main):
 
     #define button press
     def pressbutton(instance):
-
         def trigger(confirm):
             if confirm:
                 bought = events.change_dollars(main.parent, -np.int(main.items[np.int(instance.id), 1]))
@@ -45,11 +45,12 @@ def shop(self, main):
             else:
                 print("No selected")
 
+        #Confirm popup which executes trigger which then buys item iff YES was selected.
         events.popupconfirm("that you want to buy this", trigger)
 
 
 
-    #create buttons
+    #create buttons from csv
     for i in range(1,main.items.shape[0]):
         item = Button(text=(main.items[i,0]+"\n"+main.items[i,1]+"$"), id=np.str_(i), text_size=(self.width/(main.items.shape[0]+2), None))
         item.bind(on_release=pressbutton)
