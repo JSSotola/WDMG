@@ -121,13 +121,9 @@ class Actions(BoxLayout):
     def debug(self, parent):
         parent.score.debug = not parent.score.debug
         if parent.score.debug == True:
-            parent.score.ids.debug.text = "Debugging ON"
-            labeldeb = Label(text="More debugging \n information coming\n soon...\n \ntor_enabled:"+str(parent.score.tor_enabled), pos = (parent.score.width/4, parent.score.top*0.4))
-            parent.score.add_widget(labeldeb)
-
+            parent.score.ids.debug.text = "Debugging ON \n More debugging \n information coming\n soon...\n \ntor_enabled:"+str(parent.score.tor_enabled)
         else:
             parent.score.ids.debug.text = "Debugging OFF"
-            #doesnt remove debug info atm
 
     def event(self):
         Events.event(self, self.parent)
