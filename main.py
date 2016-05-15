@@ -31,6 +31,7 @@ import numpy as np
 #todo Play test?
 #todo Move class events to a separete file to keep the main.py short.
 #todo Make reset work better and fix for new implementations such as equipment and risk.
+#todo Several functions are called from Actions through MainWindow. Should be called straight forward.
 
 
 #main variables settings
@@ -197,7 +198,7 @@ class MainWindow(BoxLayout):
     def market(self, main):
         marketplace.marketplace(self, main)#Should be called directly not through MainWindow
 
-    #Perhaps also move this to a separate file?
+    #todo Perhaps also move this to a separate file?
     def exchange(self, main):
         main.clear_widgets() #clears the main window
         main.buy=0
