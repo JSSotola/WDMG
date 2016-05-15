@@ -47,7 +47,7 @@ timelimit = minutes*60*100
 timefactor = 0.003
 dollarfactor = 0.01
 stealthfactor = 0.2
-checkTOR = False
+checkTOR = True
 random_events = np.genfromtxt('events.csv', delimiter=';', dtype=np.str_)
 ev = read_csv('events.csv', sep=';', index_col=0)
 
@@ -140,7 +140,7 @@ class Actions(BoxLayout):
     def debug(self, parent):
         parent.score.debug = not parent.score.debug
         if parent.score.debug == True:
-            parent.score.ids.debug.text = "Debugging ON \n More debugging \n information coming\n soon...\n \ntor_enabled:"+str(parent.score.tor_enabled)
+            parent.score.ids.debug.text = "Debugging ON \n More debugging \n information coming\n soon..."
         else:
             parent.score.ids.debug.text = "Debugging OFF"
 
