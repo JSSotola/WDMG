@@ -91,7 +91,11 @@ def TOR(main, trigger):
         trigger(main, True)
 
     except Exception as error:
-        tor_process.kill()  # stops tor
+        print_to_screen("Error. You probably need to install TOR.")
+        try:
+            tor_process.kill()  # stops tor
+        except Exception:
+            pass
         print_to_screen(error)
         button = Button(text="OK")
         content.add_widget(button)
