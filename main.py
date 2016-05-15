@@ -10,11 +10,13 @@ from kivy.uix.textinput import TextInput
 from kivy.uix.popup import Popup
 from kivy.uix.scrollview import ScrollView
 from kivy.properties import StringProperty
+from kivy.lang import Builder
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.video import Video
 from kivy.uix.image import Image
 import random
 from pandas import read_csv
+import time
 import events, shop_function, marketplace
 import numpy as np
 
@@ -29,6 +31,15 @@ import numpy as np
 #todo Make reset work better and fix for new implementations such as equipment and risk.
 #todo Several functions are called from Actions through MainWindow. Should be called straight forward.
 
+Builder.load_string('''
+<ScrollableLabel>:
+    Label:
+        size_hint_y: None
+        height: self.texture_size[1]
+        text_size: self.width, None
+
+        text: root.text
+''')
 
 #main variables settings
 minutes = 15
@@ -36,8 +47,19 @@ timelimit = minutes*60*100
 timefactor = 0.003
 dollarfactor = 0.01
 stealthfactor = 0.2
-checkTOR = True
+checkTOR = False
+random_events = np.genfromtxt('events.csv', delimiter=';', dtype=np.str_)
+ev = read_csv('events.csv', sep=';', index_col=0)
 
+# tests choose event function
+# shop_function.choose_event(ev)
+# shop_function.choose_event(ev)
+# shop_function.choose_event(ev)
+# shop_function.choose_event(ev)
+# shop_function.choose_event(ev)
+# shop_function.choose_event(ev)
+#
+# quit()
 
 class ScrollableLabel(ScrollView):
     text = StringProperty('')
