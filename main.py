@@ -21,9 +21,8 @@ import events, shop_function, marketplace
 import numpy as np
 
 #To do
-#todo Finish marketplace. Implement better items.
+#todo Finish marketplace. Implement actual items.
 #todo Create a drug creation interface so players can sell something. Perhaps call it a druglab?
-#todo Finish TOR.
 #todo Finish item interface. Does not execute button actions ATM.
 #todo Finish shop items. Do not increase income ATM.
 #todo Play test?
