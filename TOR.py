@@ -6,29 +6,33 @@ from kivy.uix.popup import Popup
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.label import Label
 from kivy.uix.button import Button
+from kivy.clock import Clock
+import time
 
 def TOR(main, trigger):
 
 
     content = BoxLayout(orientation='vertical')
-    label = Label(text="Connecting to TOR...")
-    content.add_widget(label)
 
-    popup = Popup(title="",
+    popup = Popup(title="TOR connection.",
                   content=content,
                   size_hint=(0.9, 0.9))
 
-    # bind the on_press event of the button to the dismiss function
+    popup.open() #todo For some reason this does not execute imideatly, but waits for the connection to finish.
+    # Would be much nicer if the player could watch it as the connection is being made
 
-
-    popup.open()
     def print_to_screen(text):
-        content.add_widget(Label(text=str(text)))
+        content.add_widget(Label(text=text, color=[0,128,0, 1]))
+
+    print_to_screen("Connecting to TOR...")
+
+
     try:
         import io
         import pycurl
         import stem.process
         from stem.util import term
+
 
         SOCKS_PORT = 7000
 
@@ -64,6 +68,9 @@ def TOR(main, trigger):
 
 
         print_to_screen(term.format("Starting Tor:\n", term.Attr.BOLD))
+        print_to_screen("Starting an instance of Tor configured to only exit through Russia")
+
+        print_to_screen("Estabilishing connection...")
 
         tor_process = stem.process.launch_tor_with_config(
           config = {
@@ -73,8 +80,8 @@ def TOR(main, trigger):
           init_msg_handler = print_bootstrap_lines,
         )
 
-        print_to_screen(term.format("\nChecking our endpoint:\n", term.Attr.BOLD))
-        print_to_screen(term.format(query("https://www.atagar.com/echo.php"), term.Color.BLUE))
+        print_to_screen("Success!")
+
 
         tor_process.kill()  # stops tor
 
@@ -86,6 +93,7 @@ def TOR(main, trigger):
         trigger(main, True)
 
     except Exception as error:
+        tor_process.kill()  # stops tor
         print_to_screen(error)
         button = Button(text="OK")
         content.add_widget(button)

@@ -1,9 +1,6 @@
-#TEMP FILE
-#Example of connecting to TOR. Need to get rid of junk and then main.py will call tor.py which will return true or false based on tor availibility.
-#Source: https://stem.torproject.org/tutorials/to_russia_with_love.
-#Seems to work only the first time it is run, probably has to do with the way it stops the TOR service. Need to investigate.
 import io
 import pycurl
+
 import stem.process
 
 from stem.util import term
@@ -46,12 +43,12 @@ print(term.format("Starting Tor:\n", term.Attr.BOLD))
 tor_process = stem.process.launch_tor_with_config(
   config = {
     'SocksPort': str(SOCKS_PORT),
-    'ExitNodes': '{nl}',
+    'ExitNodes': '{ru}',
   },
   init_msg_handler = print_bootstrap_lines,
 )
 
-print(term.format("\nChecking our endpoint:\n", term.Attr.BOLD))
-print(term.format(query("https://www.atagar.com/echo.php"), term.Color.BLUE))
+#print(term.format("\nChecking our endpoint:\n", term.Attr.BOLD))
+#print(term.format(query("https://www.atagar.com/echo.php"), term.Color.BLUE))
 
 tor_process.kill()  # stops tor

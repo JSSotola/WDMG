@@ -36,7 +36,7 @@ timelimit = minutes*60*100
 timefactor = 0.003
 dollarfactor = 0.01
 stealthfactor = 0.2
-checkTOR = False
+checkTOR = True
 
 
 class ScrollableLabel(ScrollView):
