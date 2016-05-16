@@ -18,10 +18,10 @@ def lab(self, main):
 
         # create a dropdown with 10 buttons #todo Load actual ingredients probably the ones the player has already bought
         dropdown = DropDown()
-        for n in range(10):
+        for n in ["A", "B", "C", "D", "E"]:
             # when adding widgets, we need to specify the height manually (disabling
             # the size_hint_y) so the dropdown can calculate the area it needs.
-            btn = Button(text='Ingredient %d' % n, size_hint_y=None, height=30)
+            btn = Button(text=("Ingredient "+ n), size_hint_y=None, height=30)
             # for each button, attach a callback that will call the selection() method
             btn.bind(on_release=selection)
             # then add the button inside the dropdown
@@ -38,20 +38,20 @@ def lab(self, main):
 
 
     title_text = "This is your drag lab. Create drugs from ingredients. You might want to try looking for on TOR for recipes..." #Maybe add link to some sites?
-    label = Label(text=title_text, text_size=(main.width, None), size_hint = (1,0.25))
+    label = Label(text=title_text, text_size=(main.width/1.1, None), size_hint = (1,0.25))
     main.add_widget(label)
 
     bottom_area = BoxLayout(orientation = 'horizontal')
     main.add_widget(bottom_area)
 
-    selectors = BoxLayout(orientation = 'vertical')
+    selectors = BoxLayout(orientation = 'vertical', padding = [10,10,10,10], spacing = 10)
     result = Label(text="", text_size=(selectors.width, None), size_hint = (1.5,1))
     confirm = Button(text = "Create") #todo Implement
     bottom_area.add_widget(selectors)
     bottom_area.add_widget(result)
     bottom_area.add_widget(confirm)
 
-    for i in range(1,6):
-        dropdown = Button(text='Select ingredient '+str(i))
-        selectors.add_widget(dropdown_list(dropdown))
+    for i in ["first", "second", "third"]:
+        dropdown = dropdown_list(Button(text="Select " + i +" ingredient"))
+        selectors.add_widget(dropdown)
 
