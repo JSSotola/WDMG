@@ -9,18 +9,17 @@ from kivy.uix.textinput import TextInput
 from kivy.properties import StringProperty
 import random
 from pandas import read_csv
-import actions, shop_function, marketplace, events, drug_lab
+import actions, shop_function, marketplace, events, drug_lab, exchange
 
 #To do
 #todo Finish marketplace. Implement actual items.
-#todo Create a drug creation interface so players can sell something. Perhaps call it a druglab?
+#todo Finish druglab.
 #todo Finish shop items. Do not increase income ATM.
 #todo Add ingredients to shop.
 #todo Implement risk as a result of actions.
 #todo Add textboxes that explain things to the player.
-#todo Move class events to a separete file to keep the main.py short.
 #todo Make reset work better and fix for new implementations such as equipment and risk.
-#todo Several functions are called from Actions through MainWindow. Should be called straight forward.
+
 
 
 
@@ -88,8 +87,9 @@ class MainGame(Widget):
             self.t += 1
         else:
             self.t = 0
+            actions.killed()
             #endgame
-            #todo implement endgame
+
 
         #Random walk for bitcoin to dollar rate. Slight bias towards increasing.
         if self.t%200 == 0:
@@ -100,18 +100,19 @@ class MainGame(Widget):
 #passes parent.main as the main game class to all functions so that functions can interface with the main game class
 class Actions(BoxLayout):
     def exchange(self, parent):
-        MainWindow.exchange(self, parent.main)
+        exchange.exchange(self, parent.main)
 
     def lab(self, parent):
         drug_lab.lab(self, parent.main)
 
     def shop(self, parent):
-        MainWindow.shop(self, parent.main)#Should be called directly not through MainWindow
+        shop_function.shop(self, parent.main)#Should be called directly not through MainWindow
 
     def market(self, parent):
-        MainWindow.market(self,parent.main)#Should be called directly not through MainWindow
+        marketplace.marketplace(self,parent.main)#Should be called directly not through MainWindow
 
     #Debuging inteface. Right now this does not do much. Might be important for play testing
+    #disabled in main.kv ATM
     def debug(self, parent):
         parent.score.debug = not parent.score.debug
         if parent.score.debug == True:
@@ -127,62 +128,9 @@ class Actions(BoxLayout):
 
 
 
-
-
 #the central 2/3 interface. Most other events and functions interface with this.
 class MainWindow(BoxLayout):
     orientation = 'vertical'
-
-    def market(self, main):
-        marketplace.marketplace(self, main)#Should be called directly not through MainWindow
-
-    #todo Perhaps also move this to a separate file?
-    def exchange(self, main):
-        main.clear_widgets() #clears the main window
-        main.buy=0
-        def on_text(instance, value):
-            try:
-                main.buy = float(value)
-                if main.buy>0:
-                    button.text = "Buy "+str(main.buy)+" BTC for "+str(main.buy*self.parent.score.btc_rate)+"$"
-
-                elif main.buy<0:
-                    button.text = "Sell " + str(-main.buy) + " BTC for " + str(-main.buy*self.parent.score.btc_rate)+"$"
-
-            except ValueError:
-                button.text = "You need to enter a number"
-        def buysell(instance):
-            try:
-                if main.buy > 0:
-                    if self.parent.score.dollars >= main.buy * self.parent.score.btc_rate:
-                        buy_BTC(main.buy)
-                    else:
-                        button.text = "Not enough money"
-                elif main.buy < 0:
-                    if self.parent.score.bitcoins >= -main.buy:
-                        sell_BTC(-main.buy)
-                    else:
-                        button.text = "Not enough BTC"
-            except ValueError:
-                button.text = "You need to enter a number"
-        def sell_BTC(sell):
-            actions.change_dollars(main.parent, sell * self.parent.score.btc_rate)
-            actions.change_bitcoin(main.parent, -sell)
-        def buy_BTC(buy):
-            actions.change_dollars(main.parent, -buy * self.parent.score.btc_rate)
-            actions.change_bitcoin(main.parent, buy)
-
-        label = Label(text="How much BTC do you want to buy?")
-        main.add_widget(label)
-        textinput = TextInput(multiline=False)
-        textinput.bind(text=on_text)
-        main.add_widget(textinput)
-        button = Button(text="0")
-        button.bind(on_release=buysell)
-        main.add_widget(button)
-
-    def shop(self, main):
-        shop_function.shop(self, main)#Should be called directly not through MainWindow
 
 
 #Main game class and fucntion. Initialises the game.
