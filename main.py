@@ -54,13 +54,14 @@ class Scoreboard(Widget):
     risk = NumericProperty(0)
 
     #Workaround. Didn't figure out any other way. Feel free to fix this.
-    def restart(self):
-        self.dollars = 400 + random.randint(-150, 200)
-        self.bitcoins = 0
-        self.debug = False
-        self.income = 0  # In BTC
-        self.btc_rate = 300 # exchange rate in dollars
-        #self.equipment = implement based on equipment implementation
+    def restart(self, bool):
+        if bool:
+            self.dollars = 400 + random.randint(-150, 200)
+            self.bitcoins = 0
+            self.debug = False
+            self.income = 0  # In BTC
+            self.btc_rate = 300 # exchange rate in dollars
+            #self.equipment = implement based on equipment implementation
 
 
 class MainGame(Widget):
@@ -120,7 +121,8 @@ class Actions(BoxLayout):
         events.Events.event(self, parent)
 
     def restart(self, parent):
-        parent.score.restart()
+        actions.popupconfirm("you want to restart the game?", parent.score.restart)
+
 
 
 

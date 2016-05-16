@@ -10,7 +10,6 @@ def popupconfirm(text, trigger):
     def returntrue(instance):
         trigger(True)
 
-
     def returnfalse(instance):
         trigger(False)
 
