@@ -24,19 +24,20 @@ import numpy as np
 #todo Finish marketplace. Implement actual items.
 #todo Create a drug creation interface so players can sell something. Perhaps call it a druglab?
 #todo Finish shop items. Do not increase income ATM.
-
-#todo Play test?
+#todo Add ingredients to shop.
+#todo Implement risk as a result of actions.
+#todo Add textboxes that explain things to the player.
 #todo Move class events to a separete file to keep the main.py short.
 #todo Make reset work better and fix for new implementations such as equipment and risk.
 #todo Several functions are called from Actions through MainWindow. Should be called straight forward.
 
+#used for scrollabel text
 Builder.load_string('''
 <ScrollableLabel>:
     Label:
         size_hint_y: None
         height: self.texture_size[1]
         text_size: self.width, None
-
         text: root.text
 ''')
 
