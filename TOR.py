@@ -20,6 +20,7 @@ def TOR(main, trigger):
     # Would be much nicer if the player could watch it as the connection is being made
     # Seems like the problem is that the TOR connection process takes priority over the kivy process and thus the kivy process does not update anything.
     # I tried making the TOR process a secondary process with import threading, but it complained that it needs to be a main process. Not sure what to do.
+    # Maybe we can fake it?. Just save all output to a list and when tor process is finished output it one by one?
 
     def print_to_screen(text):
         content.add_widget(Label(text=str(text), color=[0,128,0, 1]))
