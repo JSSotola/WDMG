@@ -29,6 +29,12 @@ def trigger(main, TOR_working):
         main.add_widget(box)
         main.add_widget(box2)
 
+        sell_label = Label(text="Drugs in demand:")
+        buy_label = Label(text="Ingredients for sale:")
+
+        box.add_widget(buy_label)
+        box2.add_widget(sell_label)
+
         #define button press
         def pressbutton(instance):
 
