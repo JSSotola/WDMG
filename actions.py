@@ -66,7 +66,7 @@ def change_bitcoin(self, amount, notcheckzero=False):
         popupmessage("Not enough Bitcoin!")
         return False
     else:
-        self.score.bitcoins += amount
+        self.score.bitcoins += round(amount,2)
         return True
     
 #Can be used to either increase or decrease player's amount of dollars.
@@ -75,7 +75,7 @@ def change_dollars(self, amount, notcheckzero=False):
         popupmessage("Not enough money!")
         return False
     else:
-        self.score.dollars += amount
+        self.score.dollars += round(amount,2)
         return True
 def generate_equipment_list(self):
     self.score.equipment_list = "Items: \n"
