@@ -18,6 +18,8 @@ def TOR(main, trigger):
 
     popup.open() #todo For some reason this does not execute imideatly, but waits for the connection to finish.
     # Would be much nicer if the player could watch it as the connection is being made
+    # Seems like the problem is that the TOR connection process takes priority over the kivy process and thus the kivy process does not update anything.
+    # I tried making the TOR process a secondary process with import threading, but it complained that it needs to be a main process. Not sure what to do.
 
     def print_to_screen(text):
         content.add_widget(Label(text=str(text), color=[0,128,0, 1]))
