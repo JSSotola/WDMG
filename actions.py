@@ -5,7 +5,7 @@ from kivy.uix.button import Button
 from kivy.uix.label import Label
 from kivy.uix.popup import Popup
 
-
+#A confirmation message
 def popupconfirm(text, trigger):
     def returntrue(instance):
         trigger(True)
@@ -38,7 +38,7 @@ def popupconfirm(text, trigger):
 
     popup.open()
 
-
+#A standard popup message
 def popupmessage(text):
     content = BoxLayout(orientation='vertical')
     label = Label(text=text)
