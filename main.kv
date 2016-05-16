@@ -66,6 +66,11 @@
         on_release: root.exchange(root.parent)
 
     Button:
+        id: lab
+        text: "Drug lab"
+        on_release: root.lab(root.parent)
+
+    Button:
         id: shop
         text: "Shop"
         on_release: root.shop(root.parent)
@@ -76,14 +81,14 @@
         on_release: root.market(root.parent)
 
     Button:
-        id: debug
-        text: "Debug ON/OFF"
-        on_release: root.debug(root.parent)
-
-    Button:
         id: event
         text: "Opens event"
         on_release: root.event(root.parent)
+
+#    Button:
+#        id: debug
+#        text: "Debug ON/OFF"
+#        on_release: root.debug(root.parent)
 
     Button:
         id: restart

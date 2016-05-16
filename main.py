@@ -9,8 +9,7 @@ from kivy.uix.textinput import TextInput
 from kivy.properties import StringProperty
 import random
 from pandas import read_csv
-import actions, shop_function, marketplace
-import events
+import actions, shop_function, marketplace, events, drug_lab
 
 #To do
 #todo Finish marketplace. Implement actual items.
@@ -102,6 +101,9 @@ class MainGame(Widget):
 class Actions(BoxLayout):
     def exchange(self, parent):
         MainWindow.exchange(self, parent.main)
+
+    def lab(self, parent):
+        drug_lab.lab(self, parent.main)
 
     def shop(self, parent):
         MainWindow.shop(self, parent.main)#Should be called directly not through MainWindow
