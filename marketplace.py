@@ -1,7 +1,7 @@
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.label import Label
 from kivy.uix.button import Button
-import events
+import actions
 import numpy as np
 import webbrowser
 
@@ -38,14 +38,14 @@ def trigger(main, TOR_working):
         #define button press
         def pressbutton(instance):
 
-            bought = events.change_bitcoin(main.parent, -float(main.items[float(instance.id), 1]))
+            bought = actions.change_bitcoin(main.parent, -float(main.items[float(instance.id), 1]))
             if bought:
                 if main.items[instance.id,0] in main.parent.score.equipment:
                     main.parent.score.equipment[main.items[instance.id, 0]] += 1
-                    events.generate_equipment_list(main.parent)
+                    actions.generate_equipment_list(main.parent)
                 else:
                     main.parent.score.equipment[main.items[instance.id, 0]] = 1
-                    events.generate_equipment_list(main.parent)
+                    actions.generate_equipment_list(main.parent)
 
 
         #create buttons from csv
@@ -79,7 +79,7 @@ def trigger(main, TOR_working):
         def trigger_button2(bool):
             trigger(main, bool)
         def pressbutton(instance):
-            events.popupconfirm("? Your experience of the game will be greatly diminished by this choice.", trigger_button2)
+            actions.popupconfirm("? Your experience of the game will be greatly diminished by this choice.", trigger_button2)
         button2.bind(on_release = pressbutton)
 
 def marketplace(self, main):
