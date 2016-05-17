@@ -4,6 +4,8 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.button import Button
 from kivy.uix.label import Label
 from kivy.uix.popup import Popup
+import random
+import main as main_file
 
 #A confirmation message
 def popupconfirm(text, trigger):
@@ -49,15 +51,17 @@ def popupmessage(text):
                   size_hint=(0.3, 0.5))
 
     # bind the on_press event of the button to the dismiss function
-
     button.bind(on_press=popup.dismiss)
 
     popup.open()
 
 
 #Function randomly determines whether you are arrested, or get to walk free.
-def cointoss(probability):
-    pass
+def coin_toss(main, probability):
+    if random.random() < probability:
+        killed(main)
+    else:
+        popupmessage("You narrowly escaped.")
 
 
 #Can be used to either increase or decrease player's amount of bitcoin
@@ -77,16 +81,22 @@ def change_dollars(self, amount, notcheckzero=False):
     else:
         self.score.dollars += round(amount,2)
         return True
+
 def generate_equipment_list(self):
     self.score.equipment_list = "Items: \n"
     for i in self.score.equipment.keys():
         self.score.equipment_list += str(i)+ ': ' +str(self.score.equipment[i])+ "\n"
+
+def change_bitcoin_rate(self, amount):
+    self.score.btc_rate += float(amount)
 
 #Used to change gamestate to arrested state
 def arrested():
     pass
 
 #Used to change gamestate to dead state (endgame)
-def killed():
-    pass            #todo implement endgame
+def killed(main):
+    popupmessage("You lost.")
+    popupmessage("The game is restarting.")
+    main.score.restart(main_file.Scoreboard, True)
 
