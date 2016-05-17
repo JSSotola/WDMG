@@ -6,7 +6,8 @@ from kivy.uix.popup import Popup
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.label import Label
 from kivy.uix.button import Button
-
+from kivy.clock import Clock
+import time
 def TOR(main, trigger):
 
 
@@ -16,17 +17,34 @@ def TOR(main, trigger):
                   content=content,
                   size_hint=(0.9, 0.9))
 
-    popup.open() #todo For some reason this does not execute imideatly, but waits for the connection to finish.
-    # Would be much nicer if the player could watch it as the connection is being made
+    popup.open() #For some reason this does not execute imideatly, but waits for the connection to finish.
     # Seems like the problem is that the TOR connection process takes priority over the kivy process and thus the kivy process does not update anything.
     # I tried making the TOR process a secondary process with import threading, but it complained that it needs to be a main process. Not sure what to do.
-    # Maybe we can fake it?. Just save all output to a list and when tor process is finished output it one by one?
+    # I solved it by faking it. Just save all output to a list and when tor process is finished output it one by one.
+
+    main.list_output = []
 
     def print_to_screen(text):
-        content.add_widget(Label(text=str(text), color=[0,128,0, 1]))
+        if main.list_output == None:
+            main.list_output = [str(text)+"\n"]
+        else:
+            main.list_output = main.list_output+[str(text)+"\n"]
+        #content.add_widget(Label(text=str(text), color=[0,128,0, 1]))
 
     print_to_screen("Connecting to TOR...")
 
+    def printing(list_output, bool):
+        if len(list_output)>0:
+            content.add_widget(Label(text=list_output[0], color=[0,128,0, 1]))
+            main.list_output = list_output.remove(list_output[0])
+
+            Clock.schedule_once(lambda dt:printing(list_output), main.parent.score.delta_TOR)
+        else:
+            button = Button(text="OK")
+            content.add_widget(button)
+            button.bind(on_press=popup.dismiss)
+            main.parent.score.delta_TOR = 0.5 # decrease the time it takes to connect so that the players is not delayed in the future
+            trigger(main, bool)
 
     try:
         import io
@@ -83,15 +101,9 @@ def TOR(main, trigger):
 
         print_to_screen("Success!")
 
-
         tor_process.kill()  # stops tor
 
-
-        button = Button(text="OK")
-        content.add_widget(button)
-        button.bind(on_press=popup.dismiss)
-
-        trigger(main, True)
+        printing(main.list_output, True)
 
     except Exception as error:
         print_to_screen("Error. You probably need to install TOR.")
@@ -100,8 +112,7 @@ def TOR(main, trigger):
         except Exception:
             pass
         print_to_screen(error)
-        button = Button(text="OK")
-        content.add_widget(button)
-        button.bind(on_press=popup.dismiss)
 
-        trigger(main, False)
+        printing(main.list_output, False)
+
+

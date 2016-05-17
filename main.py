@@ -49,6 +49,7 @@ class Scoreboard(Widget):
     minutes = NumericProperty(0)
     seconds = NumericProperty(0)
     stealth = NumericProperty(0)
+    delta_TOR = (2)
     risk = NumericProperty(0)
 
     #Workaround. Didn't figure out any other way. Feel free to fix this.
