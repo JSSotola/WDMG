@@ -1,12 +1,12 @@
-id;event_title;event_text;media;media_type;event_effect;option_1_text;option_1_do;option_2_text;option_2_do;handler;
-0;The cops found you!;The cops have found your hideout; and are banging at your door! Think quick; what are you going to do? ;;;;Run!;coin_toss(0.5);Go to jail.;arrested()
-1;Market exit scam!;Market administrators TheEconomist and  have done an exit scam! They have disappeared into the ether and taken a lot of money that was in the market.;;;You lose X amount of money;;;;;;
-2;Bad Stealth/Bad OPSEC!;You didn't package your drugs properly! Shame on you! ;;;;;;;;;
-3;Digital currency depreciation!;The Bitcoin has significantly depreciated!  ;;;You lose X amount of money;;;;;;
-4;Package has been intercepted!;Your package has been intercepted by the authorities.;Image of ThermoFisher (drug detector);Detector.png (picture) - Detector2.png (picture);You lose X amount of money;;;;;;
-5;Drug lab has been discovered!;The location of your drug lab has been discovered; and it has been raided. ;;;You lose X amount of money OR game over;;;;;
-6;Incoming house search!;You have been tipped off by one of the Pied Piper admins: you're house is about to get searched! Time is of the essence.;;;Pacman;;;;;;
-7;You win a beauty contest!;You have finally caved after years of peer pressure and particate in the local; annual Beauty Pagent. After various rounds of parading in gliterry swimwear; shaking your ass while dancing the bachata and answering questions using generic terms you have convinced the Jury that you are indeed the one. You win 500 dollars and a year long supply of Yogi Tea. ;;;;;;;
-8;It's your birthday!;You're getting older; which besides another day closer to dying also means that you get lots of presents. Here are 100 dollars from your grandma. ;;;;;;;;
-9;Last night you got drunk and . . .;Now you have a Tweety Bird tattoo in a private place. That's gonna cost you 150 bucks for choosing bad friends. ;;;;;;;;;
-10;Health insurance;50 dollar;;;;;;;;;
+id;event_title;event_text;media;media_type;event_effect;option_1_text;option_1_do;Option_1_arg;option_2_text;option_2_do;option_2_arg;handler
+0;The cops found you!;The cops have found your hideout, and are banging at your door! Think quick what are you going to do? ;;;;Open the door.;events.popup;"""You lost the game""";Run!;coin_toss;0.5;
+1;Market exit scam!;Market administrators TheEconomist and  have done an exit scam! They have disappeared into the ether and taken a lot of money that was in the market.;;;You lose 5 BTC.;OK;events.change_bitcoins;-5;;;;
+2;Bad Stealth/Bad OPSEC!;You didn't package your drugs properly! Shame on you! ;;;;OK;;;;;;
+3;Digital currency depreciation!;The Bitcoin has significantly depreciated!  ;;;You lose X amount of money;OK;;;;;;
+4;Package has been intercepted!;Your package has been intercepted by the authorities.;Detector, Detector2;png;You lose X amount of money;OK;;;;;;
+5;Drug lab has been discovered!;The location of your drug lab has been discovered and it has been raided. ;;;;OK;;;;;;
+6;Incoming house search!;You have been tipped off by one of the Pied Piper admins: you're house is about to get searched! Time is of the essence.;;;Pacman;OK;;;;;;
+7;You win a beauty contest!;You have finally caved after years of peer pressure and particate in the local annual Beauty Pagent. After various rounds of parading in gliterry swimwear, shaking your ass while dancing the bachata and answering questions using generic terms you have convinced the Jury that you are indeed the one. You win 500 dollars and a year long supply of Yogi Tea. ;;;;OK;;;;;;
+8;It's your birthday!;You're getting older, which besides another day closer to dying also means that you get lots of presents. Here are 100 dollars from your grandma. ;;;;OK;;;;;;
+9;Last night you got drunk and;Now you have a Tweety Bird tattoo in a private place. That's gonna cost you 150 bucks for choosing bad friends. ;;;;OK;;;;;;
+10;Health insurance;50 dollar;;;;OK;;;;;;

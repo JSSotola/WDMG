@@ -36,7 +36,8 @@ class ScrollableLabel(ScrollView):
     text = StringProperty('')
 
 
-def choose_event(DF_events):
+def choose_event(event_list):
+    print(event_list)
     # this function chooses a random event using pandas read_csv which reads a csv into a DataFrame
     # here are some examples of how to use Dataframes
 
@@ -59,11 +60,9 @@ def choose_event(DF_events):
 
 #event class. Should be moved to a separete file to decluter this one.
 class Events(FloatLayout):
+    events_list = ObjectProperty(np.genfromtxt('events.csv', delimiter=';', dtype=np.str_, skip_header=1))
     def event(self, parent):
-        random_events = np.genfromtxt('events.csv', delimiter=';', dtype=np.str_)
-        DF_events = read_csv('events.csv', sep=';', index_col=0)
-
-        event = choose_event(DF_events)
+        event = choose_event(Events.events_list)
 
 
         box=BoxLayout()
