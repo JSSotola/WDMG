@@ -2,12 +2,12 @@ Id:;0;1;2;3;4;5;6;7;8;9;10;11
 id;event_title;event_text;media;media_type;event_effect;option_1_text;option_1_do;option_1_arg;option_2_text;option_2_do;option_2_arg;p_modifier
 0;The cops found you!;The cops have found your hideout, and are banging at your door! Think quick what are you going to do? ;drugvideo.mp4;video;;Open the door.;coin_toss;1;Run!;coin_toss;0.5;1
 1;Market exit scam!;Market administrators TheEconomist and  have done an exit scam! They have disappeared into the ether and taken a lot of money that was in the market.;;;You lose 5 BTC.;OK;change_bitcoin;-5;;;;1
-2;Bad Stealth/Bad OPSEC!;You didn't package your drugs properly! Shame on you! ;;;Not implemented;OK;;;;;;1
-3;Digital currency depreciation!;The Bitcoin has significantly depreciated!  ;currencydepreciation.jpg;image;Not implemented;OK;change_bitcoin_rate;-100;;;;1
+2;Bad Stealth/Bad OPSEC!;You didn't package your drugs properly! Shame on you! ;;;Not implemented - What should this do?;OK;badstealth.gif;;;;;1
+3;Digital currency depreciation!;The Bitcoin has significantly depreciated!  ;currencydepreciation.jpg;image;The rate has decreased.;OK;change_bitcoin_rate;-100;;;;1
 4;Package has been intercepted!;Your package has been intercepted by the authorities.;interceptpackage.jpg;image;You lose 1 BTC.;OK;change_bitcoin;-1;;;;1
-5;Drug lab has been discovered!;The location of your drug lab has been discovered and it has been raided. ;interceptpackage.png;image;Not implemented;OK;;;;;;1
-6;Incoming house search!;You have been tipped off by one of the Pied Piper admins: you're house is about to get searched! Time is of the essence.;;;Pacman;OK;;;;;;1
+5;Drug lab has been discovered!;The location of your drug lab has been discovered and it has been raided. ;interceptpackage.png;image;You loose all your ingredients and drugs. - not implemented.;OK;;;;;;1
+6;Incoming house search!;You have been tipped off by one of the Pied Piper admins: you're house is about to get searched! Time is of the essence.;;;Pacman - not implemented.;OK;;;;;;1
 7;You win a beauty contest!;You have finally caved after years of peer pressure and particate in the local annual Beauty Pagent. After various rounds of parading in gliterry swimwear, shaking your ass while dancing the bachata and answering questions using generic terms you have convinced the Jury that you are indeed the one. You win 500 dollars and a year long supply of Yogi Tea. ;;;You gain 500$.;OK;change_dollars;500;;;;1
 8;It's your birthday!;You're getting older, which besides another day closer to dying also means that you get lots of presents. Here are 100 dollars from your grandma. ;;;You gain 100$.;OK;change_dollars;100;;;;1
-9;Last night you got drunk and;Now you have a Tweety Bird tattoo in a private place. That's gonna cost you 150 bucks for choosing bad friends. ;;;Not implemented;OK;;;;;;1
-10;Health insurance;50 dollar;;;;OK;;;;;;1
+9;Last night you got drunk and;Now you have a Tweety Bird tattoo in a private place. That's gonna cost you 150 bucks for choosing bad friends. ;;;You loose 150$.;OK;change_dollars;-150;;;;1
+10;Health insurance;You need to pay your helth insurance.;;;You loose 50$.;OK;change_dollars;-50;;;;1
