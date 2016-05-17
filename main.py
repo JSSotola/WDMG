@@ -8,7 +8,6 @@ from kivy.uix.button import Button
 from kivy.uix.textinput import TextInput
 from kivy.properties import StringProperty
 import random
-from pandas import read_csv
 import actions, shop_function, marketplace, events, drug_lab, exchange
 
 #To do
@@ -68,10 +67,6 @@ class MainGame(Widget):
     actions = ObjectProperty(None)
     main = ObjectProperty(None)
 
-    #loads list of events from csv, move to events class which should be moved to a separete file
-    def load_events(self):
-        self.list_events = read_csv('events.csv', delimiter=';')
-        print("Loaded events")
 
     #updates the game, executes every 1/60 of a second. See MainApp at the end of this file
     def update(self, dt):
