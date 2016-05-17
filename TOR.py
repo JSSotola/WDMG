@@ -105,6 +105,7 @@ def TOR(main, trigger):
 
         printing(main.list_output, True)
 
+
     except Exception as error:
         print_to_screen("Error. You probably need to install TOR.")
         try:
