@@ -38,7 +38,7 @@ def TOR(main, trigger):
             content.add_widget(Label(text=list_output[0], color=[0,128,0, 1]))
             main.list_output = list_output.remove(list_output[0])
 
-            Clock.schedule_once(lambda dt:printing(list_output), main.parent.score.delta_TOR)
+            Clock.schedule_once(lambda dt:printing(list_output, bool), main.parent.score.delta_TOR)
         else:
             button = Button(text="OK")
             content.add_widget(button)
