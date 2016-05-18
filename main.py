@@ -134,7 +134,6 @@ class MainApp(App):
     def build(self):
         game = MainGame()
         game.t=0
-        game.load_events()
         Clock.schedule_interval(game.update, 1.0 / 60.0)
         print("Game started.")
         return game
