@@ -37,7 +37,7 @@ def lab(self, main):
         result.text="Resulting drug" #todo Implement a proper resulting function
 
 
-    title_text = "This is your drag lab. Create drugs from ingredients. You might want to try looking for on TOR for recipes..." #Maybe add link to some sites?
+    title_text = "This is your drug lab. Create drugs from ingredients. You might want to try looking on TOR for recipes..." #Maybe add link to some sites?
     label = Label(text=title_text, text_size=(main.width/1.1, None), size_hint = (1,0.25))
     main.add_widget(label)
 
