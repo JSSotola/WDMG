@@ -24,7 +24,7 @@ def lab(self, main):
 
     def create_drug(instance):
         if result.text == "Incorrect combination" or result.text == "":
-            actions.popupmessage("The combination of ingredients is not correct, try look at the internet...")
+            actions.popupmessage("The combination of ingredients is not correct, try looking online...")
         else:
             create = True
             for item in main.list_ingredients:
