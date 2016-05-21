@@ -5,14 +5,42 @@ from kivy.uix.button import Button
 from kivy.uix.dropdown import DropDown
 from kivy.uix.spinner import Spinner
 from kivy.properties import ListProperty
-
+import actions
 
 
 def lab(self, main):
     main.clear_widgets()  # clears the main window
 
-    def check_combinations(dict_ingredients):
-        result.text="Resulting drug" #todo Implement a proper resulting function
+    def check_combinations(list_ingredients):
+
+        if "Muriatic accid" in list_ingredients and "Sodium Hydroxide (NaOH)" in list_ingredients and "Diethyl Ether" in list_ingredients and "Ephedrine" in list_ingredients:
+            result.text = "Methamphetamine"
+        elif "MORNING GLORY SEEDS" in list_ingredients and "Petroleum ether" in list_ingredients and "Alcohol" in list_ingredients:
+            result.text = "LSD"
+        elif "sulfuric acid" in list_ingredients and "potassium permanganate" in list_ingredients and "coca paste" in list_ingredients:
+            result.text = "Cocaine"
+        else:
+            result.text = "Incorrect combination"
+
+    def create_drug(instance):
+        if result.text == "Incorrect combination" or result.text == "":
+            actions.popupmessage("The combination of ingredients is not correct, try look at the internet...")
+        else:
+            create = True
+            for item in main.list_ingredients:
+                if not main.parent.score.ingredients[item]>0:
+                    create = False
+                    actions.popupmessage("You do not have enough "+ str(item))
+
+            if create:
+                for item in main.list_ingredients:
+                    main.parent.score.ingredients[item] -= 1
+                if result.text in main.parent.score.equipment:
+                    main.parent.score.equipment[result.text] += 1
+                else:
+                    main.parent.score.equipment[result.text] = 1
+            actions.generate_equipment_list(main.parent)
+            actions.generate_ingredients_list(main.parent)
 
 
     title_text = "This is your drug lab. Create drugs from ingredients. You might want to try looking on TOR for recipes..." #Maybe add link to some sites?
@@ -24,17 +52,22 @@ def lab(self, main):
 
     selectors = BoxLayout(orientation = 'vertical', padding = [10,10,10,10], spacing = 10)
     result = Label(text="", text_size=(selectors.width, None), size_hint = (1.5,1))
-    confirm = Button(text = "Create") #todo Implement
+    confirm = Button(text = "Create")
     bottom_area.add_widget(selectors)
     bottom_area.add_widget(result)
     bottom_area.add_widget(confirm)
 
+    confirm.bind(on_release = create_drug)
 
 
     def exec_on_selection(spinner, text):
-        print('The spinner', spinner, 'have text', text)
         main.parent.score.selected_ingredients[spinner.id] = text
-        check_combinations(main.parent.score.selected_ingredients)
+
+        main.list_ingredients = []
+        for item in main.parent.score.selected_ingredients:
+            main.list_ingredients += [main.parent.score.selected_ingredients[item]]
+
+        check_combinations(main.list_ingredients)
 
 
 

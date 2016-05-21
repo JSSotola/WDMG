@@ -56,10 +56,9 @@ def trigger(main, TOR_working):
             if bought:
                 if main.items[instance.id, 0] in main.parent.score.ingredients:
                     main.parent.score.ingredients[main.items[instance.id, 0]] += 1
-                    actions.generate_ingredients_list(main.parent)
                 else:
                     main.parent.score.ingredients[main.items[instance.id, 0]] = 1
-                    actions.generate_ingredients_list(main.parent)
+                actions.generate_ingredients_list(main.parent)
 
 
         #create buttons from csv
