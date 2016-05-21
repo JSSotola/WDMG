@@ -47,7 +47,6 @@ class Scoreboard(Widget):
     ingredients = DictProperty()
     equipment_list = StringProperty()
     ingredients_list = StringProperty()
-    ingredients_LIST = []
     selected_ingredients = DictProperty()
 
     notcheckTOR = BooleanProperty(not checkTOR)
@@ -62,24 +61,21 @@ class Scoreboard(Widget):
     #Workaround. Didn't figure out any other way. Feel free to fix this.
     def restart(self, bool):
         if bool:
-            self.dollars = BoundedNumericProperty(400 + random.randint(-150, 200), min=0, errorvalue=0)
-            self.bitcoins = BoundedNumericProperty(0, min=0, errorvalue=0)
-            self.debug = BooleanProperty(False)
-            self.income = NumericProperty(0)  # In BTC
-            self.btc_rate = BoundedNumericProperty(300, min=50, errorvalue=50)  # exchange rate in dollars
-            self.equipment = DictProperty()
-            self.ingredients = DictProperty()
-            self.equipment_list = StringProperty()
-            self.ingredients_list = StringProperty()
-            self.ingredients_LIST = []
-            self.selected_ingredients = DictProperty()
-            self.time = NumericProperty(0)
-            self.minutes = NumericProperty(0)
-            self.seconds = NumericProperty(0)
-            self.stealth = NumericProperty(0)
-            self.delta_TOR = (2)  # sets timing in TOR connection, gets decreased after first connect
-            self.risk = NumericProperty(0)
-            self.timelimit = timelimit
+            self.dollars = 400 + random.randint(-150, 200)
+            self.bitcoins = 0
+            self.debug = False
+            self.income = 0
+            self.btc_rate = 300
+            self.equipment = {}
+            self.ingredients = {}
+            self.equipment_list = ""
+            self.ingredients_list = ""
+            self.selected_ingredients = {}
+            self.time = 0
+            self.minutes = 0
+            self.seconds = 0
+            self.stealth = 0
+            self.risk = 0
 
 
 
