@@ -25,10 +25,10 @@ def popupconfirm(text, trigger):
     label_top = Label(text='Are you sure ' + text)
     buttons = BoxLayout(orientation='horizontal')
 
-    yes_button = Button(text="Yes")
+    yes_button = Button(text="Yes", font_size=20, valign='middle', halign='center', bold=True)
     yes_button.bind(on_press=returntrue)
     yes_button.bind(on_release=popup.dismiss)
-    no_button = Button(text="No")
+    no_button = Button(text="No", font_size=20, valign='middle', halign='center', bold=True)
     no_button.bind(on_release=returnfalse)
     no_button.bind(on_release=popup.dismiss)
 
@@ -43,13 +43,13 @@ def popupconfirm(text, trigger):
 #A standard popup message
 def popupmessage(text):
     content = BoxLayout(orientation='vertical')
-    label = Label(text=text)
-    button = Button(text = "OK")
+    label = Label(text=text, font_size=20, valign='middle', halign='center', bold=True)
+    button = Button(text = "OK", font_size=20, valign='middle', halign='center', bold=True)
     content.add_widget(label)
     content.add_widget(button)
     popup = Popup(title="",
                   content=content,
-                  size_hint=(0.3, 0.5))
+                  size_hint=(0.5, 0.5))
 
     # bind the on_press event of the button to the dismiss function
     button.bind(on_press=popup.dismiss)

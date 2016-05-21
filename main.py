@@ -12,6 +12,7 @@ from kivy.uix.dropdown import DropDown
 from kivy.base import runTouchApp
 import actions, shop_function, marketplace, events, drug_lab, exchange, start_screen
 from kivy.core.audio import SoundLoader
+from kivy.uix.progressbar import ProgressBar
 
 #To do
 #todo Implement risk as a result of actions.
@@ -56,6 +57,7 @@ class Scoreboard(Widget):
     stealth = NumericProperty(0)
     delta_TOR = (2) # sets timing in TOR connection, gets decreased after first connect
     risk = NumericProperty(0)
+    timelimit = timelimit
 
     #Workaround. Didn't figure out any other way. Feel free to fix this.
     def restart(self, bool):
