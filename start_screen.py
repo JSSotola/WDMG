@@ -10,31 +10,62 @@ import random
 import main as main_file
 import actions
 
-def start(main):
-    def second_intro(instance):
-        popup.dismiss
-        #image = Image(source="media/Intro1.png")
-        #content.add_widget(image)
 
-
+def second_intro(username):
     content = BoxLayout(orientation='vertical')
-    label = Label(text="Welcome, blabla, enter your username")
-
+    label = Label(text="Greetings "+username+"!", size_hint = (1,0.1))
     content.add_widget(label)
-
-    textinput = TextInput(multiline=False)
-    content.add_widget(textinput)
-
-
-
-    button = Button(text = "OK")
-    content.add_widget(button)
-
-    button.bind(on_release = second_intro)
+    image = Image(source="media/Intro.png")
+    content.add_widget(image)
 
     popup = Popup(title="",
                   content=content,
                   size_hint=(0.9, 0.9))
+
+    button = Button(text = "OK", size_hint = (1,0.1))
+    content.add_widget(button)
+    button.bind(on_press = popup.dismiss)
+
+
+
+    # bind the on_press event of the button to the dismiss function
+    #button.bind(on_press=)
+
+    popup.open()
+
+
+def start(main):
+    content = BoxLayout(orientation='vertical')
+    label = Label(text="Howdy partner!\n"
+                       "the pied piper dark net market has just opened its doors and is looking for vendors!\n"
+                       "Would you like to embark on a journey filled with encryption,\n"
+                       "drugs, and most importantly, some sweet, sweet, bitcoins? then join pied piper!\n"
+                       "if you join us now, you will not have to pay a vendor-subscription fee.\n"
+                       "This is a limited time offer, so open up your tor browser, \n"
+                       "and go to http://piedpipermkzskura.onion/home.php !\n"
+                       "If you need help with anything at all please do not hesitate to ask. yours faithfully\n"
+                       "pied piper team.")
+    content.add_widget(label)
+    box = BoxLayout(orientation = 'horizontal', size_hint = (1, 0.1))
+
+    box.add_widget(Label(text="Enter your username:"))
+
+    textinput = TextInput(multiline=False)
+    box.add_widget(textinput)
+    content.add_widget(box)
+
+    content.add_widget(Label(text="", size_hint = (1, 0.1)))
+
+    popup = Popup(title="",
+                  content=content,
+                  size_hint=(0.9, 0.9))
+
+    button = Button(text = "OK", size_hint = (1, 0.1))
+    content.add_widget(button)
+    button.bind(on_release = lambda dt: second_intro(textinput.text))
+    button.bind(on_press = popup.dismiss)
+
+
 
     # bind the on_press event of the button to the dismiss function
     #button.bind(on_press=)
