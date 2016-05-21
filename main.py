@@ -95,6 +95,9 @@ class MainGame(Widget):
         if introduction_screen:
             try:
                 self.start
+                image = Button(text="AAA")
+                self.score.add_widget(image)
+
             except AttributeError:
                 start_screen.start(self)
                 self.start = False
@@ -114,6 +117,7 @@ class MainGame(Widget):
             if random.random() > self.prob_events and random_events:
                 events.Events.event(self, self)
             self.score.bitcoins += self.score.income
+
 
 #defines button press actions for the lower bar
 #passes parent.main as the main game class to all functions so that functions can interface with the main game class
