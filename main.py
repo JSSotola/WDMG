@@ -28,7 +28,7 @@ timelimit = minutes*60*100
 timefactor = 0.003
 dollarfactor = 0.01
 stealthfactor = 0.2
-introduction_screen = True
+introduction_screen = False
 random_events = False
 checkTOR = False #todo put True here when finished testing
 
@@ -116,7 +116,7 @@ class MainGame(Widget):
             self.score.btc_rate = round(self.score.btc_rate+random.randint(-100,110)/10, 1)
             if random.random() > self.prob_events and random_events:
                 events.Events.event(self, self)
-            self.score.bitcoins += self.score.income
+            self.score.bitcoins = round(self.score.income+self.score.bitcoins, 3)
 
 
 #defines button press actions for the lower bar
