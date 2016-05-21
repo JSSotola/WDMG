@@ -8,6 +8,8 @@ from kivy.uix.button import Button
 from kivy.uix.textinput import TextInput
 from kivy.properties import StringProperty
 import random
+from kivy.uix.dropdown import DropDown
+from kivy.base import runTouchApp
 import actions, shop_function, marketplace, events, drug_lab, exchange, start_screen
 
 #To do
@@ -51,6 +53,7 @@ class Scoreboard(Widget):
     ingredients = DictProperty()
     equipment_list = StringProperty()
     ingredients_list = StringProperty()
+    ingredients_LIST = []
     selected_ingredients = DictProperty()
 
     notcheckTOR = BooleanProperty(not checkTOR)
@@ -71,6 +74,14 @@ class Scoreboard(Widget):
             self.btc_rate = 300 # exchange rate in dollars
             #self.equipment = implement based on equipment implementation
 
+    def bla(self):
+        showingredients = DropDown()
+        for i in self.ingredients_LIST:
+            lbl = Label(text='Value %d' % i)
+            showingredients.add_widget(lbl)
+
+
+        runTouchApp(self.parents.mainbutton)
 
 class MainGame(Widget):
     score = ObjectProperty(None)

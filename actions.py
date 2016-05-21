@@ -93,6 +93,10 @@ def generate_ingredients_list(self):
     for i in self.score.ingredients.keys():
         self.score.ingredients_list += str(i)+ ': ' +str(self.score.ingredients[i])+ "\n"
 
+def generate_ingredients_LIST(self):
+    for i in self.score.ingredients.keys():
+        self.score.ingredients_LIST =  self.score.ingredients_LIST + self.score.ingredients[i]
+
 def change_bitcoin_rate(self, amount):
     self.score.btc_rate += float(amount)
 

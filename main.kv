@@ -56,6 +56,21 @@
         pos: self.width/2, root.top*0.3
         text: "Timer " + str(self.parent.minutes) + ":" + str(self.parent.seconds)
 
+    DropDown:
+        id: showingredients
+        font_size: 20
+
+
+    Button:
+        id: mainbutton
+        font_size: 20
+        pos: self.width/2, root.top*0.3
+        text: "ingredients"
+        bold: True
+        text_size: self.size
+        valign: 'middle'
+        halign: 'center'
+        on_release: showingredients.open
 
 <Actions>
     size: self.parent.width, self.parent.top/4
