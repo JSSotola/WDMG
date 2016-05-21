@@ -49,6 +49,8 @@ class Scoreboard(Widget):
     ingredients = DictProperty()
     equipment_list = StringProperty()
     ingredients_list = StringProperty()
+    selected_ingredients = DictProperty()
+
     notcheckTOR = BooleanProperty(not checkTOR)
     time = NumericProperty(0)
     minutes = NumericProperty(0)

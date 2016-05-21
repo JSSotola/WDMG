@@ -4,14 +4,14 @@ from kivy.uix.label import Label
 from kivy.uix.button import Button
 from kivy.uix.dropdown import DropDown
 from kivy.uix.spinner import Spinner
-
+from kivy.properties import ListProperty
 
 
 
 def lab(self, main):
     main.clear_widgets()  # clears the main window
 
-    def check_combinations():
+    def check_combinations(dict_ingredients):
         result.text="Resulting drug" #todo Implement a proper resulting function
 
 
@@ -33,17 +33,24 @@ def lab(self, main):
 
     def exec_on_selection(spinner, text):
         print('The spinner', spinner, 'have text', text)
-        print(spinner.id)
-        check_combinations()
+        main.parent.score.selected_ingredients[spinner.id] = text
+        check_combinations(main.parent.score.selected_ingredients)
 
-    #dropdown.bind(text=show_selected_value)
+
+
+
+    if main.parent.score.ingredients == {}:
+        ingredient_list = ("You need to buy", "ingredients in the", "dark market first.")
+    else:
+        ingredient_list =  main.parent.score.ingredients
+
 
     for i in ["first", "second", "third", "fourth", "fifth"]:
         dropdown = Spinner(
             # default value shown
             text="Select " + i +" ingredient",
             # available values
-            values=("A", "B", "C", "D", "E"),#todo add actual drugs, load it from what the player bought
+            values=ingredient_list,#todo add actual drugs, load it from what the player bought
             id = i, )
         selectors.add_widget(dropdown)
         dropdown.bind(text = exec_on_selection)
