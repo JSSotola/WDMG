@@ -87,6 +87,11 @@ def generate_equipment_list(self):
     for i in self.score.equipment.keys():
         self.score.equipment_list += str(i)+ ': ' +str(self.score.equipment[i])+ "\n"
 
+def generate_ingredients_list(self):
+    self.score.ingredients_list = "Ingredients: \n"
+    for i in self.score.ingredients.keys():
+        self.score.ingredients_list += str(i)+ ': ' +str(self.score.ingredients[i])+ "\n"
+
 def change_bitcoin_rate(self, amount):
     self.score.btc_rate += float(amount)
 

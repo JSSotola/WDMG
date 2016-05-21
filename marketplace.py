@@ -42,23 +42,24 @@ def trigger(main, TOR_working):
         def buy_ingredient(instance):
             bought = actions.change_bitcoin(main.parent, -float(main.items[float(instance.id), 1]))
             if bought:
-                if main.items[instance.id,0] in main.parent.score.equipment:
-                    main.parent.score.equipment[main.items[instance.id, 0]] += 1
-                    actions.generate_equipment_list(main.parent)
+                if main.items[instance.id,0] in main.parent.score.ingredients:
+                    main.parent.score.ingredients[main.items[instance.id, 0]] += 1
+                    actions.generate_ingredients_list(main.parent)
+
                 else:
-                    main.parent.score.equipment[main.items[instance.id, 0]] = 1
-                    actions.generate_equipment_list(main.parent)
+                    main.parent.score.ingredients[main.items[instance.id, 0]] = 1
+                    actions.generate_ingredients_list(main.parent)
 
         def sell_drug(instance):
             #check if item in inventory
             bought = actions.change_bitcoin(main.parent, -float(main.items[float(instance.id), 1]))
             if bought:
-                if main.items[instance.id, 0] in main.parent.score.equipment:
-                    main.parent.score.equipment[main.items[instance.id, 0]] += 1
-                    actions.generate_equipment_list(main.parent)
+                if main.items[instance.id, 0] in main.parent.score.ingredients:
+                    main.parent.score.ingredients[main.items[instance.id, 0]] += 1
+                    actions.generate_ingredients_list(main.parent)
                 else:
-                    main.parent.score.equipment[main.items[instance.id, 0]] = 1
-                    actions.generate_equipment_list(main.parent)
+                    main.parent.score.ingredients[main.items[instance.id, 0]] = 1
+                    actions.generate_ingredients_list(main.parent)
 
 
         #create buttons from csv

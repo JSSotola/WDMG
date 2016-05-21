@@ -46,7 +46,9 @@ class Scoreboard(Widget):
     income = NumericProperty(0) #In BTC
     btc_rate = BoundedNumericProperty(300, min = 50) # exchange rate in dollars
     equipment = DictProperty()
+    ingredients = DictProperty()
     equipment_list = StringProperty()
+    ingredients_list = StringProperty()
     notcheckTOR = BooleanProperty(not checkTOR)
     time = NumericProperty(0)
     minutes = NumericProperty(0)
