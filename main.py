@@ -8,7 +8,7 @@ from kivy.uix.button import Button
 from kivy.uix.textinput import TextInput
 from kivy.properties import StringProperty
 import random
-import actions, shop_function, marketplace, events, drug_lab, exchange
+import actions, shop_function, marketplace, events, drug_lab, exchange, start_screen
 
 #To do
 #todo Finish marketplace. Implement actual items.
@@ -28,6 +28,7 @@ timelimit = minutes*60*100
 timefactor = 0.003
 dollarfactor = 0.01
 stealthfactor = 0.2
+introduction_screen = True
 checkTOR = False #todo put True here when finished testing
 
 
@@ -76,6 +77,7 @@ class MainGame(Widget):
     main = ObjectProperty(None)
 
 
+
     #updates the game, executes every 1/60 of a second. See MainApp at the end of this file
     def update(self, dt):
         self.t
@@ -87,6 +89,13 @@ class MainGame(Widget):
         self.score.risk = int((self.t * timefactor) + (self.score.dollars * dollarfactor) + (self.score.stealth * stealthfactor))
 
         self.prob_events = 0.1
+
+
+        try:
+            self.start
+        except AttributeError:
+            start_screen.start(self)
+            self.start = False
 
         if self.t <= timelimit:
             self.t += 1
@@ -106,6 +115,8 @@ class MainGame(Widget):
 #defines button press actions for the lower bar
 #passes parent.main as the main game class to all functions so that functions can interface with the main game class
 class Actions(BoxLayout):
+
+
     def exchange(self, parent):
         exchange.exchange(self, parent.main)
 
