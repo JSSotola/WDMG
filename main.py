@@ -1,6 +1,6 @@
 from kivy.app import App
 from kivy.uix.widget import Widget
-from kivy.properties import NumericProperty, BooleanProperty, DictProperty, ObjectProperty
+from kivy.properties import NumericProperty, BooleanProperty, DictProperty, ObjectProperty, BoundedNumericProperty
 from kivy.clock import Clock
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.label import Label
@@ -36,11 +36,11 @@ checkTOR = True
 #Main game class that keeps track of game variables
 class Scoreboard(Widget):
 
-    dollars = NumericProperty(400 + random.randint(-150,200))
-    bitcoins = NumericProperty(50)
+    dollars = BoundedNumericProperty(400 + random.randint(-150,200), min = 0)
+    bitcoins = BoundedNumericProperty(50, min = 0)
     debug = BooleanProperty(False)
     income = NumericProperty(0) #In BTC
-    btc_rate = NumericProperty(300) # exchange rate in dollars
+    btc_rate = BoundedNumericProperty(300, min = 0) # exchange rate in dollars
     equipment = DictProperty()
     equipment_list = StringProperty()
     notcheckTOR = BooleanProperty(not checkTOR)
@@ -48,7 +48,7 @@ class Scoreboard(Widget):
     minutes = NumericProperty(0)
     seconds = NumericProperty(0)
     stealth = NumericProperty(0)
-    delta_TOR = (2)
+    delta_TOR = (2) # sets timing in TOR connection, gets decreased after first connect
     risk = NumericProperty(0)
 
     #Workaround. Didn't figure out any other way. Feel free to fix this.
