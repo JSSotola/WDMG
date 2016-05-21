@@ -61,32 +61,79 @@
         Rectangle:
             pos: self.pos
             size: self.size
-
+    font_size: 100
 
     Button:
         id: exchange
         text: "Currency exchange"
         on_release: root.exchange(root.parent)
 
+        text_size: self.size
+        halign: 'center'
+        valign: 'middle'
+        bold: True
+        font_hinting: 'mono'
+        font_size: 20
+        outline_color: [0,0,0]
+        outline_width: 1
+
+
+
     Button:
         id: lab
         text: "Drug lab"
         on_release: root.lab(root.parent)
+
+        text_size: self.size
+        halign: 'center'
+        valign: 'middle'
+        bold: True
+        font_hinting: 'mono'
+        font_size: 20
+        outline_color: [0,0,0]
+        outline_width: 1
 
     Button:
         id: shop
         text: "Shop"
         on_release: root.shop(root.parent)
 
+        text_size: self.size
+        halign: 'center'
+        valign: 'middle'
+        bold: True
+        font_hinting: 'mono'
+        font_size: 20
+        outline_color: [0,0,0]
+        outline_width: 1
+
     Button:
         id: market
         text: "Dark market"
         on_release: root.market(root.parent)
 
+        text_size: self.size
+        halign: 'center'
+        valign: 'middle'
+        bold: True
+        font_hinting: 'mono'
+        font_size: 20
+        outline_color: [0,0,0]
+        outline_width: 1
+
     Button:
         id: event
         text: "Opens event"
         on_release: root.event(root.parent)
+
+        text_size: self.size
+        halign: 'center'
+        valign: 'middle'
+        bold: True
+        font_hinting: 'mono'
+        font_size: 20
+        outline_color: [0,0,0]
+        outline_width: 1
 
 #    Button:
 #        id: debug
@@ -97,6 +144,15 @@
         id: restart
         text: "Restart the game"
         on_release: root.restart(self.parent.parent)
+
+        text_size: self.size
+        halign: 'center'
+        valign: 'middle'
+        bold: True
+        font_hinting: 'mono'
+        font_size: 20
+        outline_color: [0,0,0]
+        outline_width: 1
 
 <MainWindow>
     size: self.parent.width*3/4, self.parent.top*3/4
