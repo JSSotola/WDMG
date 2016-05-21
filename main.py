@@ -58,6 +58,8 @@ class Scoreboard(Widget):
     risk = NumericProperty(0)
     timelimit = timelimit
 
+    sound = SoundLoader.load("/media/Monkeys Spinning Monkeys.mp3")
+
     #Workaround. Didn't figure out any other way. Feel free to fix this.
     def restart(self, bool):
         if bool:
@@ -102,6 +104,7 @@ class MainGame(Widget):
         if introduction_screen:
             try:
                 self.start
+                self.score.sound.play()
 
             except AttributeError:
                 start_screen.start(self)
@@ -124,7 +127,7 @@ class MainGame(Widget):
             self.score.bitcoins = round(self.score.income+self.score.bitcoins, 3)
 
 
-#defines button press actions for the lower bar
+#defines button press actions for the lower barfrom kivy.core.audio import SoundLoader
 #passes parent.main as the main game class to all functions so that functions can interface with the main game class
 class Actions(BoxLayout):
 
