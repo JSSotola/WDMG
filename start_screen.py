@@ -42,7 +42,7 @@ def first_intro(main):
                         "\n \n Be careful! Heed her many terrors!"
                         "\n The Net is dark and full of errors..."
                        "\n \n Created by: \n S. Bisseling \n A. Dispenza \n D. Langerveld \n J. S. Sotola"
-                        "\n \n Anywhere you click can and will be used against you.",
+                        "\n \n You have 15 minutes. Anywhere you click can and will be used against you. ",
                         size_hint = (1,0.9), font_size=20, bold=True)
     content.add_widget(label)
 
