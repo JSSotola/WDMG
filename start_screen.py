@@ -9,5 +9,17 @@ import main as main_file
 import actions
 
 def start(main):
-    actions.popupmessage("A")
-    print("B")
+    pass
+   # content = BoxLayout(orientation='vertical')
+   # label = Label(text=text)
+   # button = Button(text = "OK")
+   # content.add_widget(label)
+   # content.add_widget(button)
+   # popup = Popup(title="",
+   #               content=content,
+   #               size_hint=(0.3, 0.5))
+   #
+   # # bind the on_press event of the button to the dismiss function
+   # button.bind(on_press=popup.dismiss)
+   #
+   # popup.open()
