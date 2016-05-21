@@ -10,10 +10,30 @@ import random
 import main as main_file
 import actions
 
+def first_intro(main):
+    content = BoxLayout(orientation='vertical')
+
+    image = Image(source="media/TOKopening.jpg")
+    content.add_widget(image)
+
+    popup = Popup(title="",
+                  content=content,
+                  size_hint=(1, 1))
+
+    button = Button(text = "START", size_hint = (1,0.1), bold=True, font_size=40)
+    content.add_widget(button)
+    button.bind(on_press = popup.dismiss)
+
+
+
+    # bind the on_press event of the button to the dismiss function
+    #button.bind(on_press=)
+
+    popup.open()
 
 def second_intro(username):
     content = BoxLayout(orientation='vertical')
-    label = Label(text="Greetings "+username+"!", size_hint = (1,0.1))
+    label = Label(text="Greetings "+username+"!", size_hint = (1,0.1), font_size=20, bold=True)
     content.add_widget(label)
     image = Image(source="media/Intro.png")
     content.add_widget(image)
@@ -71,4 +91,4 @@ def start(main):
     #button.bind(on_press=)
 
     popup.open()
-
+    first_intro(main)
