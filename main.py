@@ -11,6 +11,7 @@ import random
 from kivy.uix.dropdown import DropDown
 from kivy.base import runTouchApp
 import actions, shop_function, marketplace, events, drug_lab, exchange, start_screen
+from kivy.core.audio import SoundLoader
 
 #To do
 #todo Finish marketplace. Implement actual items.
@@ -96,8 +97,6 @@ class MainGame(Widget):
         if introduction_screen:
             try:
                 self.start
-                image = Button(text="AAA")
-                self.score.add_widget(image)
 
             except AttributeError:
                 start_screen.start(self)
