@@ -19,7 +19,7 @@ def popupconfirm(text, trigger):
     content = BoxLayout(orientation='vertical')
     popup = Popup(title='Confirmation',
                   content=content,
-                  size_hint=(0.5, 0.3))
+                  size_hint=(0.5, 0.3), auto_dismiss = False)
 
     label_top = Label(text='Are you sure ' + text)
     buttons = BoxLayout(orientation='horizontal')

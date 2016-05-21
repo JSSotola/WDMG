@@ -61,7 +61,7 @@ class Events(FloatLayout):
             image = Image(source="media/"+event[Events.media])
             layout.add_widget(image)
 
-        popup = Popup(title=event[Events.event_title], content=box, size_hint=(0.7, 0.7))
+        popup = Popup(title=event[Events.event_title], content=box, size_hint=(0.7, 0.7), auto_dismiss = False)
         popup.open()
 
         def option_click(main, option, arg):
