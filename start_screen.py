@@ -10,9 +10,8 @@ import random
 import main as main_file
 import actions
 
-def first_intro(main):
+def zero_intro(main):
     content = BoxLayout(orientation='vertical')
-
     image = Image(source="media/TOKopening.jpg")
     content.add_widget(image)
 
@@ -20,9 +19,9 @@ def first_intro(main):
                   content=content,
                   size_hint=(1, 1))
 
-    button = Button(text = "START", size_hint = (1,0.1), bold=True, font_size=40)
+    button = Button(text="START", size_hint = (1,0.1), bold=True, font_size=40)
     content.add_widget(button)
-    button.bind(on_press = popup.dismiss)
+    button.bind(on_press=popup.dismiss)
 
 
 
@@ -30,6 +29,36 @@ def first_intro(main):
     #button.bind(on_press=)
 
     popup.open()
+
+def first_intro(main):
+    content = BoxLayout(orientation='vertical')
+    label = Label(text=
+                       "\n You are to fulfill our quest, to see which Knight will be our best"
+                       "\n What quest, you ask? Well, click around! \n There are many treasures to be found "
+                        "\n Wisdom, pleasure, or perhaps some gold "
+                        "\n and many souls that may be sold."
+                        "\n Be careful and heed her many terrors"
+                        "\n Since the Net is dark and full of errors..."
+                       "\n \n Created by: \n S. Bisseling \n A. Dispenza \n D. Langerveld \n J. S. Sotola"
+                        "\n \n \n Anywhere you click can and will be used against you.",
+                        size_hint = (1,0.9), font_size=20, bold=True)
+    content.add_widget(label)
+
+    popup = Popup(title="Welcome to our game, sweet Onion Knight!",
+                  content=content,
+                  size_hint=(1, 1))
+
+    button = Button(text="START", size_hint = (1,0.1), bold=True, font_size=40)
+    content.add_widget(button)
+    button.bind(on_press=popup.dismiss)
+
+
+
+    # bind the on_press event of the button to the dismiss function
+    #button.bind(on_press=)
+
+    popup.open()
+
 
 def second_intro(username):
     content = BoxLayout(orientation='vertical')
@@ -92,3 +121,4 @@ def start(main):
 
     popup.open()
     first_intro(main)
+    zero_intro(main)
