@@ -1,4 +1,3 @@
-#todo Move all events functionality here
 
 #This file contains all functionality connected to events. Importing, randomisation etc.
 

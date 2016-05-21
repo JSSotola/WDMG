@@ -14,14 +14,9 @@ import actions, shop_function, marketplace, events, drug_lab, exchange, start_sc
 from kivy.core.audio import SoundLoader
 
 #To do
-#todo Finish marketplace. Implement actual items.
-#todo Finish druglab.
-#todo Finish shop items. Do not increase income ATM.
-#todo Add ingredients to shop.
 #todo Implement risk as a result of actions.
 #todo Add textboxes that explain things to the player.
 #todo Make reset work better and fix for new implementations such as equipment and risk.
-#todo Add graphics
 #todo Make presentation
 
 

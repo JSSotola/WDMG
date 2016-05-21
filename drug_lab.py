@@ -83,7 +83,7 @@ def lab(self, main):
             # default value shown
             text="Select " + i +" ingredient",
             # available values
-            values=ingredient_list,#todo add actual drugs, load it from what the player bought
+            values=ingredient_list,
             id = i, )
         selectors.add_widget(dropdown)
         dropdown.bind(text = exec_on_selection)
