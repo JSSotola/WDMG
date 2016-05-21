@@ -28,19 +28,18 @@ def trigger(main, TOR_working):
 
         box = BoxLayout()
         box2 = BoxLayout()
-        box3 = BoxLayout()
+        box_drugs = BoxLayout()
         main.add_widget(box)
         main.add_widget(box2)
-        main.add_widget(box3)
+        main.add_widget(box_drugs)
         sell_label = Label(text="Drugs in demand:")
         buy_label = Label(text="Ingredients for sale:")
 
         box.add_widget(buy_label)
-        box3.add_widget(sell_label)
+        box_drugs.add_widget(sell_label)
 
         #define button press
-        def pressbutton(instance):
-
+        def buy_ingredient(instance):
             bought = actions.change_bitcoin(main.parent, -float(main.items[float(instance.id), 1]))
             if bought:
                 if main.items[instance.id,0] in main.parent.score.equipment:
@@ -50,26 +49,36 @@ def trigger(main, TOR_working):
                     main.parent.score.equipment[main.items[instance.id, 0]] = 1
                     actions.generate_equipment_list(main.parent)
 
+        def sell_drug(instance):
+            #check if item in inventory
+            bought = actions.change_bitcoin(main.parent, -float(main.items[float(instance.id), 1]))
+            if bought:
+                if main.items[instance.id, 0] in main.parent.score.equipment:
+                    main.parent.score.equipment[main.items[instance.id, 0]] += 1
+                    actions.generate_equipment_list(main.parent)
+                else:
+                    main.parent.score.equipment[main.items[instance.id, 0]] = 1
+                    actions.generate_equipment_list(main.parent)
+
 
         #create buttons from csv
-        n=0
-
+        n=0 #dummy
         for i in range(1,main.items.shape[0]):
-            main.items[i, 1] = str(round(float(main.items[i, 1]) / main.parent.score.btc_rate, 2))
+            main.items[i, 1] = str(round(float(main.items[i, 1]) / main.parent.score.btc_rate, 2)) # convert to BTC at the current rate
             item = Button(text=(main.items[i,0]+"\n"+main.items[i, 1]+"BTC"), id=np.str_(i), text_size=(box.width, None))
 
             #check whether buy or sell type and assign to the appropriate row.
             if main.items[i,3] == "1" and n < 5:
-                item.bind(on_release=pressbutton)
+                item.bind(on_release=buy_ingredient)
                 box.add_widget(item)
                 n+=1
             elif main.items[i,3] == "1" and n >= 5:
-                item.bind(on_release=pressbutton)
+                item.bind(on_release=buy_ingredient)
                 box2.add_widget(item)
                 n+=1
             else:
-                box3.add_widget(item)
-                item.bind(on_release=pressbutton)
+                box_drugs.add_widget(item)
+                item.bind(on_release=sell_drug)
     else:
         label2 = Label(text="Please install TOR in order to connect to the dark net. See https://www.torproject.org/ .")
         main.add_widget(label2)
@@ -91,7 +100,7 @@ def trigger(main, TOR_working):
             trigger(main, bool)
         def pressbutton(instance):
             actions.popupconfirm("? Your experience of the game will be greatly diminished by this choice.", trigger_button2)
-        button2.bind(on_release = pressbutton)
+        button2.bind(on_release = buy_ingredient)
 
 def marketplace(self, main):
     if main.parent.score.notcheckTOR:
