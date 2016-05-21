@@ -20,7 +20,7 @@ def shop(self, main):
     main.items = load_items()
 
     #Title
-    label = Label(text="What would you like to buy?")
+    label = Label(text="What would you like to buy?", bold=True, font_size=35)
     main.add_widget(label)
 
     #add two rows of buttons
@@ -51,7 +51,7 @@ def shop(self, main):
 
     #create buttons from csv
     for i in range(1,main.items.shape[0]):
-        item = Button(text=(main.items[i,0]+"\n"+main.items[i,1]+"$"), id=np.str_(i), text_size=(self.width/(main.items.shape[0]+2), None))
+        item = Button(text=(main.items[i,0]+"\n"+main.items[i,1]+"$"), id=np.str_(i), text_size=(self.width/(main.items.shape[0]+2), None), bold=True)
         item.bind(on_release=pressbutton)
         if i< 6:
             box.add_widget(item)

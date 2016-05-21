@@ -17,7 +17,7 @@ def load_events():
 
 def trigger(main, TOR_working):
     main.clear_widgets()  # clears the main window
-    label = Label(text="The net is dark and full of errors...")
+    label = Label(text="The net is dark and full of errors...", bold=True, font_size=20)
     main.add_widget(label)
 
     if TOR_working:
@@ -32,8 +32,8 @@ def trigger(main, TOR_working):
         main.add_widget(box)
         main.add_widget(box2)
         main.add_widget(box_drugs)
-        sell_label = Label(text="Drugs in demand:")
-        buy_label = Label(text="Ingredients for sale:")
+        sell_label = Label(text="Drugs in demand:", bold=True)
+        buy_label = Label(text="Ingredients for sale:", bold=True)
 
         box.add_widget(buy_label)
         box_drugs.add_widget(sell_label)
@@ -66,7 +66,7 @@ def trigger(main, TOR_working):
         n=0 #dummy
         for i in range(1,main.items.shape[0]):
             main.items[i, 1] = str(round(float(main.items[i, 1]) / main.parent.score.btc_rate, 2)) # convert to BTC at the current rate
-            item = Button(text=(main.items[i,0]+"\n"+main.items[i, 1]+"BTC"), id=np.str_(i), text_size=(box.width, None))
+            item = Button(text=(main.items[i,0]+"\n"+main.items[i, 1]+"BTC"), id=np.str_(i), text_size=box.size, bold=True, halign='center', valign='middle')
 
             #check whether buy or sell type and assign to the appropriate row.
             if main.items[i,3] == "1" and n < 5:
@@ -81,13 +81,13 @@ def trigger(main, TOR_working):
                 box_drugs.add_widget(item)
                 item.bind(on_release=sell_drug)
     else:
-        label2 = Label(text="Please install TOR in order to connect to the dark net. See https://www.torproject.org/ .")
+        label2 = Label(text="Please install TOR in order to connect to the dark net. See https://www.torproject.org/ .", bold=True)
         main.add_widget(label2)
 
         box = BoxLayout()
         main.add_widget(box)
-        button1 = Button(text="Take me to https://www.torproject.org/ to install TOR.", text_size=(box.width*2.7, None))
-        button2 = Button(text="I don't want to install anything. Just let me play the game!", text_size=(box.width*2.7, None))
+        button1 = Button(text="Take me to https://www.torproject.org/ to install TOR.", text_size=(box.width*2.7, None), bold=True)
+        button2 = Button(text="I don't want to install anything. Just let me play the game!", text_size=(box.width*2.7, None), bold=True)
 
         box.add_widget(button1)
         box.add_widget(button2)
