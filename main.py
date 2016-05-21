@@ -28,7 +28,7 @@ timefactor = 0.003
 dollarfactor = 0.01
 stealthfactor = 0.2
 introduction_screen = True
-random_events = False
+random_events = True
 checkTOR = True #todo put True here when finished testing
 
 
