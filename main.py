@@ -86,6 +86,7 @@ class MainGame(Widget):
         self.score.minutes = int(self.t/6000)
         self.score.seconds = int((self.t/100)%60)
 
+
         #Risk inscrease
         self.score.risk = int((self.t * timefactor) + (self.score.dollars * dollarfactor) + (self.score.stealth * stealthfactor))
 
@@ -112,7 +113,7 @@ class MainGame(Widget):
             self.score.btc_rate = round(self.score.btc_rate+random.randint(-100,110)/10, 1)
             if random.random() > self.prob_events and random_events:
                 events.Events.event(self, self)
-
+            self.score.bitcoins += self.score.income
 
 #defines button press actions for the lower bar
 #passes parent.main as the main game class to all functions so that functions can interface with the main game class

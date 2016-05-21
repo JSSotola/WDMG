@@ -40,7 +40,10 @@ def shop(self, main):
                         actions.generate_equipment_list(main.parent)
                     else:
                         main.parent.score.equipment[main.items[instance.id, 0]] = 1
+                    
                         actions.generate_equipment_list(main.parent)
+                    main.parent.score.income += float(main.items[instance.id, 3])
+                    print(main.parent.score.income)
             else:
                 print("No selected")
 
