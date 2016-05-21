@@ -4,6 +4,7 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.button import Button
 from kivy.uix.label import Label
 from kivy.uix.popup import Popup
+from kivy.clock import Clock
 import random
 import main as main_file
 
@@ -102,6 +103,6 @@ def arrested():
 #Used to change gamestate to dead state (endgame)
 def killed(main):
     popupmessage("You lost.")
-    popupmessage("The game is restarting.")
+    Clock.schedule_once(lambda dt: popupmessage("The game is restarting."), 0.5)
     main.score.restart(True)
 
