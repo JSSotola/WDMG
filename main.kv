@@ -4,43 +4,56 @@
     size: self.parent.width/4, self.parent.top*3/4
     canvas:
         Color:
-            rgba: 0,0,255,0
+            rgba: 0,0,0,0.2
         Rectangle:
             pos: self.pos
             size: self.size
 
     Label:
         font_size: 20
-        pos: self.width/2, root.top*0.87
-        text: "State of the game: "
+        pos: self.width/2, root.top*0.88
+        text: "State of the game"
 
 
     Label:
-        font_size: 20
-        pos: self.width/2, root.top*0.8
+        font_size: 15
+        pos: self.width/2, root.top*0.83
         text: "Dollars: " + str(root.dollars)
 
     Label:
-        font_size: 20
-        pos: self.width/2, root.top*0.75
+        font_size: 15
+        pos: self.width/2, root.top*0.80
         text: "Bitcoins: " + str(root.bitcoins)
 
     Label:
-        font_size: 20
-        pos: self.width/2, root.top*0.7
+        font_size: 15
+        pos: self.width/2, root.top*0.77
         text: "$ per BTC: " + str(self.parent.btc_rate)
 
-    Button:
-        font_size: 10
-        size: root.width, root.top/4
-        pos: 0, root.top*0.25
-        text: str(self.parent.equipment_list)
-
-    Button:
-        font_size: 10
-        size: root.width, root.top/4
-        pos: 0, root.top*0.50
+    Label:
+        font_size: 12
+        size: root.width*0.9, root.top*0.9/3.3
+        pos: root.width*0.05, root.top*0.545
         text: str(self.parent.ingredients_list)
+        canvas:
+            Color:
+                rgba: 0,0,0,0.2
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+    Label:
+        size: root.width*0.9, root.top*0.9/3.3
+        font_size: 12
+        pos: root.width*0.05, root.top*0.255
+        text: str(self.parent.equipment_list)
+        canvas:
+            Color:
+                rgba: 0,0,0,0.2
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
 #
 #   Label:
 #       id: debug
@@ -66,7 +79,7 @@
     spacing: 3
     canvas:
         Color:
-            rgba: 0,0,255,0
+            rgba: 0,0,0,0.2
         Rectangle:
             pos: self.pos
             size: self.size
