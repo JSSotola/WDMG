@@ -33,7 +33,7 @@ def trigger(main, TOR_working):
         main.add_widget(box2)
         main.add_widget(box_drugs)
         sell_label = Label(text="Drugs in demand:", bold=True)
-        buy_label = Label(text="Ingredients for sale:", bold=True)
+        buy_label = Label(text="Ingredients\nfor\nsale:", bold=True, halign = 'center')
 
         box.add_widget(buy_label)
         box_drugs.add_widget(sell_label)
