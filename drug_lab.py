@@ -3,35 +3,13 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.label import Label
 from kivy.uix.button import Button
 from kivy.uix.dropdown import DropDown
+from kivy.uix.spinner import Spinner
 
 
 
 
 def lab(self, main):
     main.clear_widgets()  # clears the main window
-
-    def dropdown_list(mainbutton):
-
-        def selection(instance):
-            mainbutton.text = instance.text
-            check_combinations()
-
-        # create a dropdown with 10 buttons #todo Load actual ingredients probably the ones the player has already bought
-        dropdown = DropDown()
-        for n in ["A", "B", "C", "D", "E"]:
-            # when adding widgets, we need to specify the height manually (disabling
-            # the size_hint_y) so the dropdown can calculate the area it needs.
-            btn = Button(text=("Ingredient "+ n), size_hint_y=None, height=30)
-            # for each button, attach a callback that will call the selection() method
-            btn.bind(on_release=selection)
-            # then add the button inside the dropdown
-            dropdown.add_widget(btn)
-
-        # show the dropdown menu when the main button is released.
-        mainbutton.bind(on_release=dropdown.open)
-
-        return mainbutton
-
 
     def check_combinations():
         result.text="Resulting drug" #todo Implement a proper resulting function
@@ -51,7 +29,22 @@ def lab(self, main):
     bottom_area.add_widget(result)
     bottom_area.add_widget(confirm)
 
-    for i in ["first", "second", "third"]:
-        dropdown = dropdown_list(Button(text="Select " + i +" ingredient"))
+
+
+    def exec_on_selection(spinner, text):
+        print('The spinner', spinner, 'have text', text)
+        print(spinner.id)
+        check_combinations()
+
+    #dropdown.bind(text=show_selected_value)
+
+    for i in ["first", "second", "third", "fourth", "fifth"]:
+        dropdown = Spinner(
+            # default value shown
+            text="Select " + i +" ingredient",
+            # available values
+            values=("A", "B", "C", "D", "E"),#todo add actual drugs, load it from what the player bought
+            id = i, )
         selectors.add_widget(dropdown)
+        dropdown.bind(text = exec_on_selection)
 
