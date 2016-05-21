@@ -86,6 +86,7 @@ class MainGame(Widget):
         #Risk inscrease
         self.score.risk = int((self.t * timefactor) + (self.score.dollars * dollarfactor) + (self.score.stealth * stealthfactor))
 
+        self.prob_events = 0.1
 
         if self.t <= timelimit:
             self.t += 1
@@ -98,6 +99,8 @@ class MainGame(Widget):
         #Random walk for bitcoin to dollar rate. Slight bias towards increasing.
         if self.t%200 == 0:
             self.score.btc_rate = round(self.score.btc_rate+random.randint(-100,110)/10, 1)
+            if random.random() > self.prob_events:
+                events.Events.event(self, self)
 
 
 #defines button press actions for the lower bar
