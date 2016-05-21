@@ -67,7 +67,7 @@ def lab(self, main):
         for item in main.parent.score.selected_ingredients:
             main.list_ingredients += [main.parent.score.selected_ingredients[item]]
 
-        check_combinations(main.list_ingredients)
+        check_combinations(main.list_ingredients)#todo fix bug the argument is not the list of selected but the list of available
 
 
 
