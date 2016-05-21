@@ -105,7 +105,7 @@ class MainGame(Widget):
             actions.killed()
             #endgame
 
-        self.prob_events = 0.1
+        self.prob_events = 0.01
 
         #Random walk for bitcoin to dollar rate. Slight bias towards increasing.
         if self.t%200 == 0:
