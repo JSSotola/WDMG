@@ -54,12 +54,10 @@ class Events(FloatLayout):
         layout.add_widget(text)
 
         if event[Events.media_type] == "image":
-            video = Video(source="media/"+event[Events.media])
-            layout.add_widget(video)
-        elif event[Events.media_type] == "video":
             image = Image(source="media/"+event[Events.media])
             layout.add_widget(image)
-
+        elif event[Events.media_type] == "video":
+            pass
         popup = Popup(title=event[Events.event_title], content=box, size_hint=(0.7, 0.7), auto_dismiss = False)
         popup.open()
 
