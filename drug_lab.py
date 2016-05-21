@@ -24,7 +24,7 @@ def lab(self, main):
 
     def create_drug(instance):
         if result.text == "Incorrect combination" or result.text == "":
-            actions.popupmessage("The combination of ingredients is not correct, try looking online...")
+            actions.popupmessage("The combination of ingredients is \n not correct, try looking online...")
         else:
             create = True
             for item in main.list_ingredients:
@@ -51,8 +51,8 @@ def lab(self, main):
     main.add_widget(bottom_area)
 
     selectors = BoxLayout(orientation = 'vertical', padding = [10,10,10,10], spacing = 10)
-    result = Label(text="", text_size=(selectors.width, None), size_hint = (1.5,1))
-    confirm = Button(text = "Create")
+    result = Label(text="", text_size=(selectors.width, None), size_hint = (1.5,1), bold=True)
+    confirm = Button(text = "Create", bold=True, font_size=30, text_size=self.size, valign='middle', halign='center')
     bottom_area.add_widget(selectors)
     bottom_area.add_widget(result)
     bottom_area.add_widget(confirm)
@@ -84,7 +84,7 @@ def lab(self, main):
             text="Select " + i +" ingredient",
             # available values
             values=ingredient_list,
-            id = i, )
+            id = i, valign='middle', halign='center', bold=True, text_size=self.size)
         selectors.add_widget(dropdown)
         dropdown.bind(text = exec_on_selection)
 
