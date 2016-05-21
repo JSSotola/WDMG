@@ -11,7 +11,6 @@ import random
 from kivy.uix.dropdown import DropDown
 from kivy.base import runTouchApp
 import actions, shop_function, marketplace, events, drug_lab, exchange, start_screen
-from kivy.core.audio import SoundLoader
 from kivy.uix.progressbar import ProgressBar
 
 #To do
@@ -58,7 +57,6 @@ class Scoreboard(Widget):
     risk = NumericProperty(0)
     timelimit = timelimit
 
-    sound = SoundLoader.load("/media/Monkeys Spinning Monkeys.mp3")
 
     #Workaround. Didn't figure out any other way. Feel free to fix this.
     def restart(self, bool):
@@ -104,7 +102,6 @@ class MainGame(Widget):
         if introduction_screen:
             try:
                 self.start
-                self.score.sound.play()
 
             except AttributeError:
                 start_screen.start(self)
