@@ -98,5 +98,5 @@ def arrested():
 def killed(main):
     popupmessage("You lost.")
     popupmessage("The game is restarting.")
-    main.score.restart(main_file.Scoreboard, True)
+    main.score.restart(True)
 
