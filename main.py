@@ -30,7 +30,7 @@ timelimit = minutes*60*100
 timefactor = 0.003
 dollarfactor = 0.01
 stealthfactor = 0.2
-introduction_screen = False
+introduction_screen = True
 random_events = False
 checkTOR = False #todo put True here when finished testing
 
