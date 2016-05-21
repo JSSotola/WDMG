@@ -13,11 +13,11 @@ def lab(self, main):
 
     def check_combinations(list_ingredients):
 
-        if ("Muriatic accid" in list_ingredients and "Sodium Hydroxide (NaOH)" in list_ingredients and "Diethyl Ether" in list_ingredients and "Ephedrine" in list_ingredients):
+        if ("Muriatic accid" in list_ingredients) and ("Sodium Hydroxide (NaOH)" in list_ingredients) and ("Diethyl Ether" in list_ingredients) and ("Ephedrine" in list_ingredients):
             result.text = "Methamphetamine"
-        elif ("MORNING GLORY SEEDS" in list_ingredients and "Petroleum ether" in list_ingredients and "Alcohol" in list_ingredients):
+        elif ("MORNING GLORY SEEDS" in list_ingredients) and ("Petroleum ether" in list_ingredients) and ("Alcohol" in list_ingredients):
             result.text = "LSD"
-        elif ("sulfuric acid" in list_ingredients and "potassium permanganate" in list_ingredients and "coca paste" in list_ingredients):
+        elif ("sulfuric acid" in list_ingredients) and ("potassium permanganate" in list_ingredients) and ("coca paste" in list_ingredients):
             result.text = "Cocaine"
         else:
             result.text = "Incorrect combination"
