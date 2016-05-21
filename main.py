@@ -27,8 +27,8 @@ timefactor = 0.003
 dollarfactor = 0.01
 stealthfactor = 0.2
 introduction_screen = True
-random_events = False
-checkTOR = False #todo put True here when finished testing
+random_events = True
+checkTOR = True #todo put True here when finished testing
 
 
 
@@ -37,11 +37,11 @@ checkTOR = False #todo put True here when finished testing
 class Scoreboard(Widget):
 
     #properties
-    dollars = BoundedNumericProperty(400 + random.randint(-150,200), min = 0)
-    bitcoins = BoundedNumericProperty(50, min = 0)
+    dollars = BoundedNumericProperty(400 + random.randint(-150,200), min = 0, errorvalue = 0)
+    bitcoins = BoundedNumericProperty(50, min = 0, errorvalue = 0)
     debug = BooleanProperty(False)
     income = NumericProperty(0) #In BTC
-    btc_rate = BoundedNumericProperty(300, min = 50) # exchange rate in dollars
+    btc_rate = BoundedNumericProperty(300, min = 50, errorvalue = 50) # exchange rate in dollars
     equipment = DictProperty()
     ingredients = DictProperty()
     equipment_list = StringProperty()
@@ -104,12 +104,12 @@ class MainGame(Widget):
             actions.killed()
             #endgame
 
-        self.prob_events = 0.01
+        self.prob_events = 0.05
 
         #Random walk for bitcoin to dollar rate. Slight bias towards increasing.
         if self.t%200 == 0:
             self.score.btc_rate = round(self.score.btc_rate+random.randint(-100,110)/10, 1)
-            if random.random() > self.prob_events and random_events:
+            if random.random() < self.prob_events and random_events:
                 events.Events.event(self, self)
             self.score.bitcoins = round(self.score.income+self.score.bitcoins, 3)
 

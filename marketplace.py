@@ -100,9 +100,9 @@ def trigger(main, TOR_working):
 
         def trigger_button2(bool):
             trigger(main, bool)
-        def pressbutton(instance):
+        def pressbutton2(instance):
             actions.popupconfirm("? Your experience of the game will be greatly diminished by this choice.", trigger_button2)
-        button2.bind(on_release = buy_ingredient)
+        button2.bind(on_release = pressbutton2)
 
 def marketplace(self, main):
     if main.parent.score.notcheckTOR:
