@@ -30,43 +30,35 @@
         pos: self.width/2, root.top*0.7
         text: "$ per BTC: " + str(self.parent.btc_rate)
 
-    Label:
+    Button:
         font_size: 10
-        pos: self.width/2, root.top*0.5
+        size: root.width, root.top/4
+        pos: 0, root.top*0.25
         text: str(self.parent.equipment_list)
 
-    Label:
-        font_size: 10
-        pos: self.width/2, root.top*0.6
-        text_size: self.size
-        text: str(self.parent.ingredients_list)
-
-    Label:
-        id: debug
-        font_size: 15
-        pos: self.width/2, root.top*0.4
-        text: ""
-
-    Label:
-        font_size: 20
-        pos: self.width/2, root.top*0.35
-        text: "Risk level " + str(self.parent.risk)
-
-    Label:
-        font_size: 20
-        pos: self.width/2, root.top*0.3
-        text: "Timer " + str(self.parent.minutes) + ":" + str(self.parent.seconds)
-
     Button:
-        id: mainbutton
-        font_size: 20
-        pos: self.width/2, root.top*0.3
-        text: "ingredients"
-        bold: True
-        text_size: self.size
-        valign: 'middle'
-        halign: 'center'
-        on_release: root.bla(root.parent)
+        font_size: 10
+        size: root.width, root.top/4
+        pos: 0, root.top*0.50
+        text: str(self.parent.ingredients_list)
+#
+#   Label:
+#       id: debug
+#       font_size: 15
+#       pos: self.width/2, root.top*0.4
+#       text: ""
+#
+# #  Label:
+  #      font_size: 20
+  #      pos: self.width/2, root.top*0.35
+  #      text: "Risk level " + str(self.parent.risk)
+  #
+  #  Label:
+  #      font_size: 20
+  #      pos: self.width/2, root.top*0.3
+  #      text: "Timer " + str(self.parent.minutes) + ":" + str(self.parent.seconds)
+  #
+
 
 <Actions>
     size: self.parent.width, self.parent.top/4

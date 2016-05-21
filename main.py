@@ -71,20 +71,6 @@ class Scoreboard(Widget):
             self.btc_rate = 300 # exchange rate in dollars
             #self.equipment = implement based on equipment implementation
 
-    def bla(self, parent):
-        print("A")
-        dropdown = DropDown()
-        try:
-            for i in parent.score.ingredients_LIST:
-                lbl = Label(text=i)
-                dropdown.add_widget(lbl)
-            self.ids.mainbutton.bind(on_release = dropdown.open)
-
-        except AttributeError as exept:
-            print("Error", exept)
-            pass
-
-
 
 
 class MainGame(Widget):

@@ -45,12 +45,10 @@ def trigger(main, TOR_working):
                 if main.items[instance.id,0] in main.parent.score.ingredients:
                     main.parent.score.ingredients[main.items[instance.id, 0]] += 1
                     actions.generate_ingredients_list(main.parent)
-                    actions.generate_ingredients_LIST(main.parent)
 
                 else:
                     main.parent.score.ingredients[main.items[instance.id, 0]] = 1
                     actions.generate_ingredients_list(main.parent)
-                    actions.generate_ingredients_LIST(main.parent)
 
         def sell_drug(instance):
             #check if item in inventory
