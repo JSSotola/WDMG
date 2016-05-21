@@ -33,14 +33,16 @@ def zero_intro(main):
 def first_intro(main):
     content = BoxLayout(orientation='vertical')
     label = Label(text=
-                       "\n You are to fulfill our quest, to see which Knight will be our best"
-                       "\n What quest, you ask? Well, click around! \n There are many treasures to be found "
+                       " You are to fulfill our quest, \n To see which Knight will be our best."
+                       "\n What quest, you ask? Well, click around! \n There are many treasures to be found. "
                         "\n Wisdom, pleasure, or perhaps some gold "
                         "\n and many souls that may be sold."
-                        "\n Be careful and heed her many terrors"
-                        "\n Since the Net is dark and full of errors..."
+                        "\n The largest pile of gold will win"
+                        "\n While losers rot away in sin."
+                        "\n \n Be careful! Heed her many terrors!"
+                        "\n The Net is dark and full of errors..."
                        "\n \n Created by: \n S. Bisseling \n A. Dispenza \n D. Langerveld \n J. S. Sotola"
-                        "\n \n \n Anywhere you click can and will be used against you.",
+                        "\n \n Anywhere you click can and will be used against you.",
                         size_hint = (1,0.9), font_size=20, bold=True)
     content.add_widget(label)
 
