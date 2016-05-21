@@ -14,6 +14,7 @@
         pos: self.width/2, root.top*0.87
         text: "State of the game: "
 
+
     Label:
         font_size: 20
         pos: self.width/2, root.top*0.8
@@ -66,7 +67,7 @@
         Rectangle:
             pos: self.pos
             size: self.size
-    font_size: 100
+
 
     Button:
         id: exchange
@@ -79,8 +80,7 @@
         bold: True
         font_hinting: 'mono'
         font_size: 20
-        outline_color: [0,0,0]
-        outline_width: 1
+        border: (20,20,20,20)
 
 
 
@@ -95,8 +95,7 @@
         bold: True
         font_hinting: 'mono'
         font_size: 20
-        outline_color: [0,0,0]
-        outline_width: 1
+
 
     Button:
         id: shop
@@ -109,8 +108,7 @@
         bold: True
         font_hinting: 'mono'
         font_size: 20
-        outline_color: [0,0,0]
-        outline_width: 1
+
 
     Button:
         id: market
@@ -123,8 +121,7 @@
         bold: True
         font_hinting: 'mono'
         font_size: 20
-        outline_color: [0,0,0]
-        outline_width: 1
+
 
     Button:
         id: event
@@ -137,8 +134,7 @@
         bold: True
         font_hinting: 'mono'
         font_size: 20
-        outline_color: [0,0,0]
-        outline_width: 1
+
 
 #    Button:
 #        id: debug
@@ -156,17 +152,15 @@
         bold: True
         font_hinting: 'mono'
         font_size: 20
-        outline_color: [0,0,0]
-        outline_width: 1
+
 
 <MainWindow>
     size: self.parent.width*3/4, self.parent.top*3/4
-    canvas:
-        Color:
-            rgba: 0,0,255,1
+    canvas.before:
         Rectangle:
             pos: self.pos
             size: self.size
+            source: 'media/Background4.jpg'
 
 <Events>
 
@@ -183,6 +177,7 @@
     Actions:
         id: actionsid
         pos: 0, 0
+
     Events:
         id: eventsid
         pos: root.width/2, root.top/2
