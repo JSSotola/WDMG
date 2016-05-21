@@ -40,7 +40,7 @@ class Scoreboard(Widget):
     bitcoins = BoundedNumericProperty(50, min = 0)
     debug = BooleanProperty(False)
     income = NumericProperty(0) #In BTC
-    btc_rate = BoundedNumericProperty(300, min = 0) # exchange rate in dollars
+    btc_rate = BoundedNumericProperty(300, min = 50) # exchange rate in dollars
     equipment = DictProperty()
     equipment_list = StringProperty()
     notcheckTOR = BooleanProperty(not checkTOR)
