@@ -90,12 +90,12 @@ class MainGame(Widget):
 
         self.prob_events = 0.1
 
-
-        try:
-            self.start
-        except AttributeError:
-            start_screen.start(self)
-            self.start = False
+        if introduction_screen:
+            try:
+                self.start
+            except AttributeError:
+                start_screen.start(self)
+                self.start = False
 
         if self.t <= timelimit:
             self.t += 1
