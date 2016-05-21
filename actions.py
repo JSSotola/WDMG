@@ -101,8 +101,12 @@ def arrested():
     pass
 
 #Used to change gamestate to dead state (endgame)
-def killed(main):
-    popupmessage("You lost.\n\nYour score is" + str(main.score.dollars*7.35)+"!")
-    Clock.schedule_once(lambda dt: popupmessage("The game is restarting."), 0.5)
+def endgame(main):
+    Clock.schedule_once(lambda dt: popupmessage("Your score is " + str(main.score.dollars*7.35)+"!\n\n\nThe game is restarting."), 1)
     main.score.restart(True)
+
+def killed(main):
+    popupmessage("You lost.")
+    endgame(main)
+
 

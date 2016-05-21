@@ -28,7 +28,7 @@ timefactor = 0.003
 dollarfactor = 0.01
 stealthfactor = 0.2
 introduction_screen = True
-random_events = True
+random_events = False
 checkTOR = True #todo put True here when finished testing
 
 
@@ -39,7 +39,7 @@ class Scoreboard(Widget):
 
     #properties
     dollars = BoundedNumericProperty(400 + random.randint(-150,200), min = 0, errorvalue = 0)
-    bitcoins = BoundedNumericProperty(50, min = 0, errorvalue = 0)
+    bitcoins = BoundedNumericProperty(0, min = 0, errorvalue = 0)
     debug = BooleanProperty(False)
     income = NumericProperty(0) #In BTC
     btc_rate = BoundedNumericProperty(300, min = 50, errorvalue = 50) # exchange rate in dollars
@@ -103,7 +103,7 @@ class MainGame(Widget):
             self.t += 1
         else:
             self.t = 0
-            actions.killed()
+            actions.endgame(self)
             #endgame
 
         self.prob_events = 0.05
