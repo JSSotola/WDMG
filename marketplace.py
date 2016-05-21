@@ -53,9 +53,12 @@ def trigger(main, TOR_working):
         def sell_drug(instance):
             #check if item in inventory
             if main.items[instance.id, 0] in main.parent.score.equipment:
-                main.parent.score.equipment[main.items[instance.id, 0]] -= 1
-                actions.change_bitcoin(main.parent, float(main.items[float(instance.id), 1]))
-                actions.generate_equipment_list(main.parent)
+                if main.parent.score.equipment[main.items[instance.id, 0]]>0:
+                    main.parent.score.equipment[main.items[instance.id, 0]] -= 1
+                    actions.change_bitcoin(main.parent, float(main.items[float(instance.id), 1]))
+                    actions.generate_equipment_list(main.parent)
+                else:
+                    actions.popupmessage("You do not have this drug, hence you cannot sell it.")
             else:
                 actions.popupmessage("You do not have this drug, hence you cannot sell it.")
 
