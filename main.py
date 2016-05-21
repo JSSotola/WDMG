@@ -40,9 +40,6 @@ checkTOR = False #todo put True here when finished testing
 #Main game class that keeps track of game variables
 class Scoreboard(Widget):
 
-    #graphic properties
-
-
     #properties
     dollars = BoundedNumericProperty(400 + random.randint(-150,200), min = 0)
     bitcoins = BoundedNumericProperty(50, min = 0)
@@ -74,14 +71,21 @@ class Scoreboard(Widget):
             self.btc_rate = 300 # exchange rate in dollars
             #self.equipment = implement based on equipment implementation
 
-    def bla(self):
-        showingredients = DropDown()
-        for i in self.ingredients_LIST:
-            lbl = Label(text='Value %d' % i)
-            showingredients.add_widget(lbl)
+    def bla(self, parent):
+        print("A")
+        dropdown = DropDown()
+        try:
+            for i in parent.score.ingredients_LIST:
+                lbl = Label(text=i)
+                dropdown.add_widget(lbl)
+            self.ids.mainbutton.bind(on_release = dropdown.open)
 
-        #runtouch
-        runTouchApp(self.parents.mainbutton)
+        except AttributeError as exept:
+            print("Error", exept)
+            pass
+
+
+
 
 class MainGame(Widget):
     score = ObjectProperty(None)
@@ -133,7 +137,6 @@ class MainGame(Widget):
 #defines button press actions for the lower bar
 #passes parent.main as the main game class to all functions so that functions can interface with the main game class
 class Actions(BoxLayout):
-
 
     def exchange(self, parent):
         exchange.exchange(self, parent.main)

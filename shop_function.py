@@ -38,12 +38,9 @@ def shop(self, main):
                     if main.items[instance.id,0] in main.parent.score.equipment:
                         main.parent.score.equipment[main.items[instance.id, 0]] += 1
                         actions.generate_equipment_list(main.parent)
-                        actions.generate_ingredients_LIST(main.parent)
                     else:
                         main.parent.score.equipment[main.items[instance.id, 0]] = 1
-
                         actions.generate_equipment_list(main.parent)
-                        actions.generate_ingredients_LIST(main.parent)
                     try:
                         income = float(main.items[instance.id, 3])
                         main.parent.score.income += income

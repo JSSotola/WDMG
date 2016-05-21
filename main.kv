@@ -31,13 +31,14 @@
         text: "$ per BTC: " + str(self.parent.btc_rate)
 
     Label:
-        font_size: 20
+        font_size: 10
         pos: self.width/2, root.top*0.5
         text: str(self.parent.equipment_list)
 
     Label:
-        font_size: 20
+        font_size: 10
         pos: self.width/2, root.top*0.6
+        text_size: self.size
         text: str(self.parent.ingredients_list)
 
     Label:
@@ -56,11 +57,6 @@
         pos: self.width/2, root.top*0.3
         text: "Timer " + str(self.parent.minutes) + ":" + str(self.parent.seconds)
 
-    DropDown:
-        id: showingredients
-        font_size: 20
-
-
     Button:
         id: mainbutton
         font_size: 20
@@ -70,7 +66,7 @@
         text_size: self.size
         valign: 'middle'
         halign: 'center'
-        on_release: showingredients.open
+        on_release: root.bla(root.parent)
 
 <Actions>
     size: self.parent.width, self.parent.top/4
