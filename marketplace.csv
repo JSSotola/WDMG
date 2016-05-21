@@ -1,6 +1,14 @@
-name, price, description,Buy
-Ingredient 1,0.1, this is an item,1
-Ingredient 2,0.1, this is another item,1
-Drug 1,1, this is another item,0
-Drug 2,2, this is another item,0
-Drug 3,3, this is another item,0
+name, price, description,Ingredient,output
+Methamphetamine,72.3,,0,
+LSD,18.7,,0,
+Cocain,164.11,,0,
+Muriatic accid,7.88,,1,meth
+Sodium Hydroxide (NaOH),98,,1,meth
+Diethyl Ether,50.7,,1,meth
+Ephedrine,44.99,,1,meth
+MORNING GLORY SEEDS,4,,1,LSD
+Petroleum ether,13,,1,LSD
+Alcohol,7,,1,LSD
+sulfuric acid,437,,1,Cocain
+potassium permanganate,115,,1,Cocain
+coca paste,987,,1,Cocain

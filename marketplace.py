@@ -28,14 +28,15 @@ def trigger(main, TOR_working):
 
         box = BoxLayout()
         box2 = BoxLayout()
+        box3 = BoxLayout()
         main.add_widget(box)
         main.add_widget(box2)
-
+        main.add_widget(box3)
         sell_label = Label(text="Drugs in demand:")
         buy_label = Label(text="Ingredients for sale:")
 
         box.add_widget(buy_label)
-        box2.add_widget(sell_label)
+        box3.add_widget(sell_label)
 
         #define button press
         def pressbutton(instance):
@@ -51,15 +52,23 @@ def trigger(main, TOR_working):
 
 
         #create buttons from csv
+        n=0
+
         for i in range(1,main.items.shape[0]):
-            item = Button(text=(main.items[i,0]+"\n"+main.items[i,1]+"BTC"), id=np.str_(i), text_size=(box.width, None))
+            main.items[i, 1] = str(round(float(main.items[i, 1]) / main.parent.score.btc_rate, 2))
+            item = Button(text=(main.items[i,0]+"\n"+main.items[i, 1]+"BTC"), id=np.str_(i), text_size=(box.width, None))
 
             #check whether buy or sell type and assign to the appropriate row.
-            if main.items[i,3] == "1":
+            if main.items[i,3] == "1" and n < 5:
                 item.bind(on_release=pressbutton)
                 box.add_widget(item)
-            else:
+                n+=1
+            elif main.items[i,3] == "1" and n >= 5:
+                item.bind(on_release=pressbutton)
                 box2.add_widget(item)
+                n+=1
+            else:
+                box3.add_widget(item)
                 item.bind(on_release=pressbutton)
     else:
         label2 = Label(text="Please install TOR in order to connect to the dark net. See https://www.torproject.org/ .")
