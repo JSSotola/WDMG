@@ -76,7 +76,7 @@ def start(main):
 
     content.add_widget(Label(text="", size_hint = (1, 0.1)))
 
-    popup = Popup(title="",
+    popup = Popup(title="You've got mail!",
                   content=content,
                   size_hint=(0.9, 0.9))
 

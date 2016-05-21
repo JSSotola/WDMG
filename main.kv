@@ -4,7 +4,7 @@
     size: self.parent.width/4, self.parent.top*3/4
     canvas:
         Color:
-            rgba: 0,0,255,0.3
+            rgba: 0,0,255,0
         Rectangle:
             pos: self.pos
             size: self.size
@@ -66,7 +66,7 @@
     spacing: 3
     canvas:
         Color:
-            rgba: 0,0,255,0.3
+            rgba: 0,0,255,0
         Rectangle:
             pos: self.pos
             size: self.size
@@ -160,10 +160,13 @@
 <MainWindow>
     size: self.parent.width*3/4, self.parent.top*3/4
     canvas.before:
+        Color:
+            rgba: 0,0,255,0
         Rectangle:
             pos: self.pos
             size: self.size
-            source: 'media/Background4.jpg'
+
+
 
 <Events>
 
@@ -171,8 +174,11 @@
     score: scoreid
     actions: actionsid
     main: mainid
-
-
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'media/Background4.jpg'
     Scoreboard:
         id: scoreid
         pos: 0, root.top*3/12
