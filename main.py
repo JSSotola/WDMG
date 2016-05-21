@@ -18,8 +18,8 @@ import actions, shop_function, marketplace, events, drug_lab, exchange
 #todo Implement risk as a result of actions.
 #todo Add textboxes that explain things to the player.
 #todo Make reset work better and fix for new implementations such as equipment and risk.
-
-
+#todo Add graphics
+#todo Make presentation
 
 
 #main variables settings
@@ -36,6 +36,10 @@ checkTOR = True
 #Main game class that keeps track of game variables
 class Scoreboard(Widget):
 
+    #graphic properties
+
+
+    #properties
     dollars = BoundedNumericProperty(400 + random.randint(-150,200), min = 0)
     bitcoins = BoundedNumericProperty(50, min = 0)
     debug = BooleanProperty(False)
