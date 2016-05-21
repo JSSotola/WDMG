@@ -80,7 +80,7 @@ class Scoreboard(Widget):
             lbl = Label(text='Value %d' % i)
             showingredients.add_widget(lbl)
 
-
+        #runtouch
         runTouchApp(self.parents.mainbutton)
 
 class MainGame(Widget):
